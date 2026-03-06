@@ -6,13 +6,62 @@ import jakarta.persistence.*;
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //this makes it so ids are automaticall generated, probably what we want
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //random stuff idk what we asctually want
     private String name;
     private String ingredients;
+    private String instructions; // Add this
     private boolean glutenFree;
 
-    // getters & setters
+    // Constructors (optional)
+    public Recipe() {}
+
+    public Recipe(String name, String ingredients, String instructions, boolean glutenFree) {
+        this.name = name;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this.glutenFree = glutenFree;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public boolean isGlutenFree() {
+        return glutenFree;
+    }
+
+    public void setGlutenFree(boolean glutenFree) {
+        this.glutenFree = glutenFree;
+    }
 }

@@ -2,47 +2,56 @@ package com.guthub.backend.controller;
 
 import com.guthub.backend.model.Recipe;
 import com.guthub.backend.repository.RecipeRepository;
-import com.guthub.backend.service.RecipeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-
-//Available api endpoints: GET /recipes, POST /recipes
+// Available API endpoints:
+// GET /recipes
+// GET /recipes/{id}
+// POST /recipes
+// PUT /recipes/{id}
+// DELETE /recipes/{id}
 
 @RestController
 @RequestMapping("/recipes")
 public class RecipeController {
 
-    private final RecipeService recipeService;
+    private final RecipeRepository recipeRepository;
 
-    public RecipeController(RecipeService recipeService) {
-        this.recipeService = recipeService;
+    public RecipeController(RecipeRepository recipeRepository) {
+        this.recipeRepository = recipeRepository;
     }
 
     @GetMapping
     public List<Recipe> getAllRecipes() {
-        return recipeService.getAllRecipes();
+        return recipeRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public Optional<Recipe> getRecipeById(@PathVariable Long id) {
-        return recipeService.getRecipeById(id);
+        return recipeRepository.findById(id);
     }
 
     @PostMapping
     public Recipe createRecipe(@RequestBody Recipe recipe) {
-        return recipeService.createRecipe(recipe);
+        return recipeRepository.save(recipe);
     }
 
     @PutMapping("/{id}")
-    public Recipe updateRecipe(@PathVariable Long id, @RequestBody Recipe recipe) {
-        return recipeService.updateRecipe(id, recipe);
+    public Recipe updateRecipe(@PathVariable Long id, @RequestBody Recipe updatedRecipe) {
+        return recipeRepository.findById(id).map(recipe -> {
+            recipe.setName(updatedRecipe.getName());
+            recipe.setIngredients(updatedRecipe.getIngredients());
+            recipe.setInstructions(updatedRecipe.getInstructions());
+            recipe.setGlutenFree(updatedRecipe.isGlutenFree());
+            return recipeRepository.save(recipe);
+        }).orElseThrow(() -> new RuntimeException("Recipe not found"));
     }
 
     @DeleteMapping("/{id}")
     public void deleteRecipe(@PathVariable Long id) {
-        recipeService.deleteRecipe(id);
+        recipeRepository.deleteById(id);
     }
 }

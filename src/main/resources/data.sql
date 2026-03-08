@@ -1,7 +1,7 @@
 INSERT INTO recipe (name, ingredients, instructions, gluten_free) 
 VALUES ('Test', 'test Ingredients', 'test instructions', FALSE);
 
-INSERT INTO restaurant (name, location, cuisine_type, is_gf, featured, celiac_certified)
+INSERT INTO restaurant (name, location, cuisine_type, gluten_free, featured, celiac_certified)
 VALUES ('Happy Hogan & Friends', 'Afghanistan', 'iron', TRUE, TRUE, TRUE);
 
 INSERT INTO reviews (restaurant_id, user_id, rating, comment)

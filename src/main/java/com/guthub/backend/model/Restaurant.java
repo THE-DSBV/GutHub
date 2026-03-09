@@ -86,8 +86,8 @@ public class Restaurant {
         this.celiacCertified = celiacCertified;
     }
 
-
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    private List<Review> reviews;
+    //commented out so i can test other stuff
+    //@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    ///private List<Review> reviews;
     
 }

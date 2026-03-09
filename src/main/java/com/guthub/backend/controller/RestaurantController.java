@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.guthub.backend.model.Recipe;
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.RestaurantRepository;
 
@@ -63,4 +65,21 @@ public class RestaurantController {
     public void deleteRestaurant(@PathVariable Long id) {
         restaurantRepository.deleteById(id);
     }
+
+    //multi keyword search
+    @GetMapping("/search")
+    public List<Restaurant> searchRestaurants(@RequestParam String keyword) {
+        String[] words = keyword.split(" ");
+        List<Restaurant> results = restaurantRepository.findAll();
+        return results.stream().filter(restaurant -> {
+            String name = restaurant.getName().toLowerCase();
+            for (String word : words) {
+                if (name.contains(word.toLowerCase())) {
+                    return true;
+                }
+            }
+            return false;
+        }).toList();
+    }
+    
 }

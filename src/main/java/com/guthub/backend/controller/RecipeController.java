@@ -13,6 +13,7 @@ import java.util.Optional;
 // POST /recipes
 // PUT /recipes/{id}
 // DELETE /recipes/{id}
+// GET /recipes/search?keyword={keyword}
 
 @RestController
 @RequestMapping("/recipes")
@@ -53,5 +54,21 @@ public class RecipeController {
     @DeleteMapping("/{id}")
     public void deleteRecipe(@PathVariable Long id) {
         recipeRepository.deleteById(id);
+    }
+
+    //multi keyword search
+    @GetMapping("/search")
+    public List<Recipe> searchRecipes(@RequestParam String keyword) {
+        String[] words = keyword.split(" ");
+        List<Recipe> results = recipeRepository.findAll();
+        return results.stream().filter(recipe -> {
+            String name = recipe.getName().toLowerCase();
+            for (String word : words) {
+                if (name.contains(word.toLowerCase())) {
+                    return true;
+                }
+            }
+            return false;
+        }).toList();
     }
 }

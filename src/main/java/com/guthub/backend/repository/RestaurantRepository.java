@@ -15,10 +15,11 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     (value = "SELECT * FROM restaurant WHERE LOWER(name) LIKE LOWER(CONCAT('%', :keyword, '%'))", nativeQuery = true)
     List<Restaurant> searchRestaurantsByKeyword(@Param("keyword") String keyword);
 
-    @Query
-    (value = "SELECT * FROM restaurant WHERE rating >= :minRating", nativeQuery = true)
-    List<Restaurant> findByRatingGreaterThanEqual(@Param("minRating") Integer minRating);
-    
+    @Query(value = "SELECT r.* FROM restaurant r " +
+    "JOIN review rv ON rv.restaurant_id = r.id " +
+    "GROUP BY r.id " +
+    "HAVING AVG(rv.rating) >= :minRating", nativeQuery = true)
+    List<Restaurant> findByMinAverageRating(@Param("minRating") Double minRating);
     
     }
     

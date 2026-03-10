@@ -1,5 +1,6 @@
 package com.guthub.backend.model;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Restaurant {
@@ -14,6 +15,8 @@ public class Restaurant {
     private boolean glutenFree;
     private boolean featured;
     private boolean celiacCertified;
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<RestaurantReview> reviews;
 
 
 
@@ -85,9 +88,14 @@ public class Restaurant {
     public void setCeliacCertified(boolean celiacCertified) {
         this.celiacCertified = celiacCertified;
     }
+    
+    public List<RestaurantReview> getReviews() {
+        return reviews;
+    }
 
-    //commented out so i can test other stuff
-    //@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
-    ///private List<Review> reviews;
+    public void setReviews(List<RestaurantReview> reviews) {
+        this.reviews = reviews;
+    }
+    
     
 }

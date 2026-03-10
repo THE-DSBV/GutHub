@@ -1,6 +1,7 @@
 package com.guthub.backend.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Recipe {
@@ -11,10 +12,11 @@ public class Recipe {
 
     private String name;
     private String ingredients;
-    private String instructions; // Add this
+    private String instructions; //Add this
     private boolean glutenFree;
+    @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
+    private List<RecipeReview> reviews;
 
-    // Constructors (optional)
     public Recipe() {}
 
     public Recipe(String name, String ingredients, String instructions, boolean glutenFree) {
@@ -24,7 +26,7 @@ public class Recipe {
         this.glutenFree = glutenFree;
     }
 
-    // Getters and Setters
+    //Getters and Setters
     public Long getId() {
         return id;
     }
@@ -63,5 +65,13 @@ public class Recipe {
 
     public void setGlutenFree(boolean glutenFree) {
         this.glutenFree = glutenFree;
+    }
+
+    public List<RecipeReview> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<RecipeReview> reviews) {
+        this.reviews = reviews;
     }
 }

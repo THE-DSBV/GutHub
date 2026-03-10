@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.guthub.backend.model.Recipe;
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.RestaurantRepository;
 
@@ -80,6 +79,11 @@ public class RestaurantController {
             }
             return false;
         }).toList();
+    }
+
+    @GetMapping("/moreThan/{minRating}")
+    public List<Restaurant> getTopRated(@PathVariable Integer minRating) {
+        return restaurantRepository.findByRatingGreaterThanEqual(minRating);
     }
     
 }

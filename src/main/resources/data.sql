@@ -9,8 +9,8 @@ VALUES ('Happy Hogan & Friends', 'Afghanistan', 'iron', TRUE, TRUE, TRUE);
 INSERT INTO reviews (restaurant_id, user_id, rating, comment)
 VALUES (1, 1, 10, 'I loved the food and experience. Did not expect to meet Tony Stark!');
 
-INSERT INTO menu_items (restaurant_id, item_name, celiac_certified)
-(1, 'sloppy tony', TRUE)
+INSERT INTO menu_items (restaurant_id, item_name, celiac_certified, description, restaurant)
+(1, 'sloppy tony', TRUE, "The pinacle of joy! A perfectly curated combination of stark industries' finest donuts and our famous dirty milk bomb.", 'Happy Hogan & Friends')
 
 INSERT INTO meals (id, name, type, date)
 VALUES (1, 'Ragnars mead', 3, '793-03-08')

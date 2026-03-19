@@ -36,13 +36,22 @@ public class RestaurantController {
 
     @GetMapping
     public List<Restaurant> getAllRestaurants() {
+        // Instead of returning entities directly, map menu items to DTOs
         List<Restaurant> restaurants = restaurantRepository.findAll();
         restaurants.forEach(r -> {
             if (r.getMenuItems() != null) {
-                // replace full menu items with DTOs
                 r.setMenuItems(r.getMenuItems().stream()
-                .map(mi -> new MenuItem(mi.getItemName(), mi.getDescription(), mi.isCeliacCertified(), null))
-                .toList());
+                    .map(m -> {
+                        // Convert to DTO to prevent recursion
+                        MenuItemDTO dto = mapToDTO(m);
+                        // Hack: cast DTO back to MenuItem for simplicity
+                        MenuItem mi = new MenuItem();
+                        mi.setId(dto.getId());
+                        mi.setItemName(dto.getItemName());
+                        mi.setDescription(dto.getDescription());
+                        mi.setCeliacCertified(dto.getCeliacCertified());
+                        return mi;
+                    }).toList());
             }
         });
         return restaurants;
@@ -50,15 +59,22 @@ public class RestaurantController {
 
     @GetMapping("/{id}")
     public Optional<Restaurant> getRestaurantById(@PathVariable Long id) {
-        Optional<Restaurant> opt = restaurantRepository.findById(id);
-        opt.ifPresent(r -> {
+        Optional<Restaurant> restaurant = restaurantRepository.findById(id);
+        restaurant.ifPresent(r -> {
             if (r.getMenuItems() != null) {
                 r.setMenuItems(r.getMenuItems().stream()
-                    .map(mi -> new MenuItem(mi.getItemName(), mi.getDescription(), mi.isCeliacCertified(), null))
-                    .toList());
+                    .map(m -> {
+                        MenuItemDTO dto = mapToDTO(m);
+                        MenuItem mi = new MenuItem();
+                        mi.setId(dto.getId());
+                        mi.setItemName(dto.getItemName());
+                        mi.setDescription(dto.getDescription());
+                        mi.setCeliacCertified(dto.getCeliacCertified());
+                        return mi;
+                    }).toList());
             }
         });
-        return opt;
+        return restaurant;
     }
 
     @PostMapping
@@ -104,5 +120,14 @@ public class RestaurantController {
     public List<Restaurant> getTopRated(@PathVariable Double minRating) {
         return restaurantRepository.findByMinAverageRating(minRating);
     }
+
+   private MenuItemDTO mapToDTO(MenuItem menuItem) {
+    return new MenuItemDTO(
+        menuItem.getId(),
+        menuItem.getItemName(),
+        menuItem.getDescription(),
+        menuItem.isCeliacCertified()
+    );
+} 
     
 }

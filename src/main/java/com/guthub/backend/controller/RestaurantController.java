@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.guthub.backend.model.MenuItem;
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.RestaurantRepository;
+import com.guthub.backend.dto.MenuItemDTO;
 
 // Available API endpoints:
 // GET /recipes
@@ -34,12 +36,29 @@ public class RestaurantController {
 
     @GetMapping
     public List<Restaurant> getAllRestaurants() {
-        return restaurantRepository.findAll();
+        List<Restaurant> restaurants = restaurantRepository.findAll();
+        restaurants.forEach(r -> {
+            if (r.getMenuItems() != null) {
+                // replace full menu items with DTOs
+                r.setMenuItems(r.getMenuItems().stream()
+                .map(mi -> new MenuItem(mi.getItemName(), mi.getDescription(), mi.isCeliacCertified(), null))
+                .toList());
+            }
+        });
+        return restaurants;
     }
 
     @GetMapping("/{id}")
     public Optional<Restaurant> getRestaurantById(@PathVariable Long id) {
-        return restaurantRepository.findById(id);
+        Optional<Restaurant> opt = restaurantRepository.findById(id);
+        opt.ifPresent(r -> {
+            if (r.getMenuItems() != null) {
+                r.setMenuItems(r.getMenuItems().stream()
+                    .map(mi -> new MenuItem(mi.getItemName(), mi.getDescription(), mi.isCeliacCertified(), null))
+                    .toList());
+            }
+        });
+        return opt;
     }
 
     @PostMapping

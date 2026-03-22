@@ -1,5 +1,6 @@
 INSERT INTO recipe (name, ingredients, instructions, gluten_free) VALUES
-('Avocado Egg Breakfast Bowl', 'eggs, avocado, spinach, salt', 'Cook eggs and assemble bowl.', TRUE), /*if this recipe gets removed we'll have to update the recipe automated tests*/
+/*if the first recipe gets removed we'll have to update the recipe automated tests*/
+('Avocado Egg Breakfast Bowl', 'eggs, avocado, spinach, salt', 'Cook eggs and assemble bowl.', TRUE), 
 ('Classic Pancakes', 'flour, milk, eggs, sugar', 'Mix batter and cook on griddle.', FALSE),
 ('Chicken Stir Fry', 'chicken, broccoli, soy sauce, garlic', 'Stir fry chicken and vegetables.', TRUE),
 ('Beef Tacos', 'beef, tortillas, lettuce, cheese', 'Cook beef and assemble tacos.', FALSE),
@@ -51,6 +52,7 @@ INSERT INTO recipe (name, ingredients, instructions, gluten_free) VALUES
 ('Chicken Rice Bowl', 'chicken, rice, vegetables', 'Cook chicken and assemble bowl.', TRUE);
 
 INSERT INTO restaurant (name, location, cuisine_type, gluten_free, featured, celiac_certified) VALUES
+/*if the first restaurant gets removed we'll have to update the restaurant automated tests*/
 ('Golden Fork Bistro','France','French',TRUE,TRUE,FALSE),
 ('Spice Route Kitchen','India','Indian',TRUE,FALSE,TRUE),
 ('Roma Pasta House','Italy','Italian',FALSE,TRUE,FALSE),

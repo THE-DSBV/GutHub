@@ -1,5 +1,4 @@
 package com.guthub.backend;
-import com.guthub.backend.controller.RecipeNotFoundException;
 import com.guthub.backend.model.Recipe;
 import com.guthub.backend.model.RecipeReview;
 import com.guthub.backend.repository.RecipeRepository;

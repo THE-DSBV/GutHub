@@ -33,9 +33,8 @@ public class RecipeController {
     }
 
     @GetMapping("/{id}")
-    public Recipe getRecipeById(@PathVariable Long id) {
-        return recipeRepository.findById(id)
-        .orElseThrow(() -> new RecipeNotFoundException(id));
+    public Optional<Recipe> getRecipeById(@PathVariable Long id) {
+        return recipeRepository.findById(id);
     }
 
     @PostMapping

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.guthub.backend.controller.dto.MenuItemDTO;
 import com.guthub.backend.model.MenuItem;
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.RestaurantRepository;
-import com.guthub.backend.dto.MenuItemDTO;
 
 // Available API endpoints:
 // GET /recipes

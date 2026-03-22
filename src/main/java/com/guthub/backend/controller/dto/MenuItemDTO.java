@@ -1,4 +1,4 @@
-package com.guthub.backend.dto;
+package com.guthub.backend.controller.dto;
 
 public class MenuItemDTO {
     private Long id;

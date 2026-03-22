@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+//import com.guthub.backend.controller.exceptions.RecipeNotFoundException;
+
 // Available API endpoints:
 // GET /recipes
 // GET /recipes/{id}
@@ -31,8 +33,9 @@ public class RecipeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Recipe> getRecipeById(@PathVariable Long id) {
-        return recipeRepository.findById(id);
+    public Recipe getRecipeById(@PathVariable Long id) {
+        return recipeRepository.findById(id)
+        .orElseThrow(() -> new RecipeNotFoundException(id));
     }
 
     @PostMapping

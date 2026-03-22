@@ -16,7 +16,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     List<Restaurant> searchRestaurantsByKeyword(@Param("keyword") String keyword);
 
     @Query(value = "SELECT r.* FROM restaurant r " +
-    "JOIN review rv ON rv.restaurant_id = r.id " +
+    "JOIN restaurant_review rv ON rv.restaurant_id = r.id " +
     "GROUP BY r.id " +
     "HAVING AVG(rv.rating) >= :minRating", nativeQuery = true)
     List<Restaurant> findByMinAverageRating(@Param("minRating") Double minRating);

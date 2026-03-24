@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.guthub.backend.controller.dto.MenuItemDTO;
 import com.guthub.backend.model.MenuItem;
 import com.guthub.backend.model.Restaurant;
+import com.guthub.backend.model.RestaurantReview;
 import com.guthub.backend.repository.RestaurantRepository;
 
 // Available API endpoints:
@@ -127,7 +128,6 @@ public class RestaurantController {
         menuItem.getItemName(),
         menuItem.getDescription(),
         menuItem.isCeliacCertified()
-    );
-} 
-    
+    );  
+    }
 }

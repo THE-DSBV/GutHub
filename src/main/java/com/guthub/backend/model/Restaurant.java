@@ -19,6 +19,8 @@ public class Restaurant {
     private List<RestaurantReview> reviews;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<MenuItem> menuItems;
+    @Transient
+    private Double averageRating;
 
 
 
@@ -105,6 +107,17 @@ public class Restaurant {
 
     public void setMenuItems(List<MenuItem> menuItems) {
         this.menuItems = menuItems;
+    }
+
+    public Double getAverageRating() {
+        if (reviews == null || reviews.isEmpty()) {
+            return 0.0;
+        }
+        double sum = 0;
+        for (RestaurantReview review : reviews) {
+            sum += review.getRating();
+        }
+        return sum / reviews.size();
     }
     
     

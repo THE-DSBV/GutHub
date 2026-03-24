@@ -16,6 +16,9 @@ public class Recipe {
     private boolean glutenFree;
     @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<RecipeReview> reviews;
+    @Transient
+    private Double averageRating;
+
 
     public Recipe() {}
 
@@ -73,5 +76,16 @@ public class Recipe {
 
     public void setReviews(List<RecipeReview> reviews) {
         this.reviews = reviews;
+    }
+
+    public Double getAverageRating() {
+        if (reviews == null || reviews.isEmpty()) {
+            return 0.0;
+        }
+        double sum = 0;
+        for (RecipeReview review : reviews) {
+            sum += review.getRating();
+        }
+        return sum / reviews.size();
     }
 }

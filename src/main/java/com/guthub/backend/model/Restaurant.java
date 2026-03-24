@@ -12,18 +12,22 @@ public class Restaurant {
     private String name;
     private String location;
     private String cuisineType;
-    private boolean glutenFree;
-    private boolean featured;
-    private boolean celiacCertified;
+    private Boolean glutenFree;
+    private Boolean featured;
+    private Boolean celiacCertified;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<RestaurantReview> reviews;
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<MenuItem> menuItems;
+    @Transient
+    private Double averageRating;
 
 
 
     // Constructors (optional)
     public Restaurant() {}
 
-    public Restaurant(String name, String location, String cuisineType, boolean glutenFree, boolean featured, boolean celiacCertified) {
+    public Restaurant(String name, String location, String cuisineType, Boolean glutenFree, Boolean featured, Boolean celiacCertified) {
         this.name = name;
         this.location = location;
         this.cuisineType = cuisineType;
@@ -65,27 +69,27 @@ public class Restaurant {
         this.location = location;
     }
 
-    public boolean isGlutenFree() { //Gluten
+    public Boolean isGlutenFree() { //Gluten
         return glutenFree;
     }
 
-    public void setGlutenFree(boolean glutenFree) {
+    public void setGlutenFree(Boolean glutenFree) {
         this.glutenFree = glutenFree;
     }
 
-    public boolean isFeatured() { // Featured
+    public Boolean isFeatured() { // Featured
         return featured;
     }
 
-    public void setFeatured(boolean featured) {
+    public void setFeatured(Boolean featured) {
         this.featured = featured;
     }
 
-    public boolean isCeliacCertified() { // Celiac
+    public Boolean isCeliacCertified() { // Celiac
         return celiacCertified;
     }
 
-    public void setCeliacCertified(boolean celiacCertified) {
+    public void setCeliacCertified(Boolean celiacCertified) {
         this.celiacCertified = celiacCertified;
     }
     
@@ -95,6 +99,25 @@ public class Restaurant {
 
     public void setReviews(List<RestaurantReview> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
+    }
+
+    public Double getAverageRating() {
+        if (reviews == null || reviews.isEmpty()) {
+            return 0.0;
+        }
+        double sum = 0;
+        for (RestaurantReview review : reviews) {
+            sum += review.getRating();
+        }
+        return sum / reviews.size();
     }
     
     

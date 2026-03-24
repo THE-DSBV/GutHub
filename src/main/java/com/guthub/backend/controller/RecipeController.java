@@ -1,11 +1,14 @@
 package com.guthub.backend.controller;
 
 import com.guthub.backend.model.Recipe;
+import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.RecipeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+//import com.guthub.backend.controller.exceptions.RecipeNotFoundException;
 
 // Available API endpoints:
 // GET /recipes
@@ -71,4 +74,11 @@ public class RecipeController {
             return false;
         }).toList();
     }
+
+    @GetMapping("/moreThan/{minRating}")
+    public List<Recipe> getTopRated(@PathVariable Double minRating) {
+        return recipeRepository.findByMinAverageRating(minRating);
+    }
+
+    
 }

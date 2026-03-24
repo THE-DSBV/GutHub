@@ -79,22 +79,6 @@ public class MenuItemController {
         menuItemRepository.deleteById(id);
     }
 
-    // GET all menu items for a specific restaurant
-    @GetMapping("/restaurant/{restaurantId}")
-    public List<MenuItem> getMenuItemsByRestaurant(@PathVariable Long restaurantId) {
-        return menuItemRepository.findByRestaurantId(restaurantId);
-    }
 
-    // GET search items by name across all restaurants
-    @GetMapping("/search")
-    public List<MenuItem> searchAllItems(@RequestParam String keyword) {
-        return menuItemRepository.searchByItemName(keyword);
-    }
-
-    // GET celiac certified items for a specific restaurant
-    @GetMapping("/restaurant/{restaurantId}/celiac")
-    public List<MenuItem> getCeliacCertifiedItemsByRestaurant(@PathVariable Long restaurantId) {
-        return menuItemRepository.findCeliacCertifiedByRestaurantId(restaurantId);
-    }
 
 }

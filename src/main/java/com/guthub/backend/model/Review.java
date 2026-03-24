@@ -1,9 +1,13 @@
 package com.guthub.backend.model;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
 
 @MappedSuperclass
 public abstract class Review {
@@ -19,11 +23,20 @@ public abstract class Review {
     private int rating;
     private String text;
 
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime date;
+
     public Review() {}
 
     public Review(int rating, String text) {
         this.rating = rating;
         this.text = text;
+    }
+
+    // Automatically set date before insert
+    @PrePersist
+    protected void onCreate() {
+        this.date = LocalDateTime.now();
     }
 
     // Getters and Setters

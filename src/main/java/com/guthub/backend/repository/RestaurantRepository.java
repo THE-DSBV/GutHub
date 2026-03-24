@@ -20,7 +20,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
     "GROUP BY r.id " +
     "HAVING AVG(rv.rating) >= :minRating", nativeQuery = true)
     List<Restaurant> findByMinAverageRating(@Param("minRating") Double minRating);
-    
+
     }
     
 

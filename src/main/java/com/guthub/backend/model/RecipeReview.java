@@ -1,5 +1,7 @@
 package com.guthub.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -7,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class RecipeReview extends Review {
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
     private Recipe recipe;

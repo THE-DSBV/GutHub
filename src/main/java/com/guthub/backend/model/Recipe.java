@@ -3,6 +3,8 @@ package com.guthub.backend.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import io.micrometer.common.lang.Nullable;
+
 @Entity
 public class Recipe {
 
@@ -14,6 +16,7 @@ public class Recipe {
     private String ingredients;
     private String instructions; //Add this
     private boolean glutenFree;
+    private boolean featured;
     @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<RecipeReview> reviews;
     @Transient
@@ -22,11 +25,12 @@ public class Recipe {
 
     public Recipe() {}
 
-    public Recipe(String name, String ingredients, String instructions, boolean glutenFree) {
+    public Recipe(String name, String ingredients, String instructions, boolean glutenFree, boolean featured) {
         this.name = name;
         this.ingredients = ingredients;
         this.instructions = instructions;
         this.glutenFree = glutenFree;
+        this.featured = featured;
     }
 
     //Getters and Setters
@@ -87,5 +91,13 @@ public class Recipe {
             sum += review.getRating();
         }
         return sum / reviews.size();
+    }
+
+    public Boolean isFeatured() { // Featured
+        return featured;
+    }
+
+    public void setFeatured(Boolean featured) {
+        this.featured = featured;
     }
 }

@@ -2,7 +2,6 @@ package com.guthub.backend.controller;
 
 import com.guthub.backend.model.Recipe;
 import com.guthub.backend.model.Restaurant;
-import com.guthub.backend.model.RestaurantReview;
 import com.guthub.backend.repository.RecipeRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,14 +80,5 @@ public class RecipeController {
         return recipeRepository.findByMinAverageRating(minRating);
     }
 
-    public Double getAverageRating() {
-        if (reviews == null || reviews.isEmpty()) {
-            return 0.0;
-        }
-        double sum = 0;
-        for (RestaurantReview review : reviews) {
-            sum += review.getRating();
-        }
-        return sum / reviews.size();
-    }
+    
 }

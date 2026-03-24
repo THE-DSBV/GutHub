@@ -36,25 +36,40 @@ public class RestaurantController {
     }
 
     @GetMapping
-    public List<Restaurant> getAllRestaurants() {
-        // Instead of returning entities directly, map menu items to DTOs
+    public List<Restaurant> getAllRestaurants(
+            @RequestParam(required = false) String cuisine,
+            @RequestParam(required = false) Double minRating) {
+
         List<Restaurant> restaurants = restaurantRepository.findAll();
+
+        if (cuisine != null) {
+            restaurants = restaurants.stream()
+                    .filter(r -> r.getCuisineType().equalsIgnoreCase(cuisine))
+                    .toList();
+        }
+
+        if (minRating != null) {
+            restaurants = restaurants.stream()
+                    .filter(r -> r.getAverageRating() >= minRating)
+                    .toList();
+        }
         restaurants.forEach(r -> {
             if (r.getMenuItems() != null) {
                 r.setMenuItems(r.getMenuItems().stream()
                     .map(m -> {
-                        // Convert to DTO to prevent recursion
                         MenuItemDTO dto = mapToDTO(m);
-                        // Hack: cast DTO back to MenuItem for simplicity
+
                         MenuItem mi = new MenuItem();
                         mi.setId(dto.getId());
                         mi.setItemName(dto.getItemName());
                         mi.setDescription(dto.getDescription());
                         mi.setCeliacCertified(dto.getCeliacCertified());
+
                         return mi;
                     }).toList());
             }
         });
+
         return restaurants;
     }
 
@@ -117,10 +132,12 @@ public class RestaurantController {
         }).toList();
     }
 
+    /* 
     @GetMapping("/moreThan/{minRating}")
     public List<Restaurant> getTopRated(@PathVariable Double minRating) {
         return restaurantRepository.findByMinAverageRating(minRating);
     }
+    */
 
    private MenuItemDTO mapToDTO(MenuItem menuItem) {
     return new MenuItemDTO(

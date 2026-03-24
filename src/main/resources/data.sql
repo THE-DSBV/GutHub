@@ -75,64 +75,6 @@ VALUES
     ('Volos Greek Cuisine', '133 Richmond St W, Toronto, ON', 'Greek', TRUE, FALSE, FALSE),
     ('Barque Smokehouse Roncesvalles', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', TRUE, FALSE, FALSE);
 
-=======
-INSERT INTO restaurant (name, location, cuisine_type, gluten_free, featured, celiac_certified) VALUES
-/*if the first restaurant gets removed we'll have to update the restaurant automated tests*/
-('Golden Fork Bistro','France','French',TRUE,TRUE,FALSE),
-('Spice Route Kitchen','India','Indian',TRUE,FALSE,TRUE),
-('Roma Pasta House','Italy','Italian',FALSE,TRUE,FALSE),
-('Tokyo Sakura Grill','Japan','Japanese',TRUE,TRUE,TRUE),
-('Dragon Wok','China','Chinese',FALSE,FALSE,FALSE),
-('Casa Mexicana','Mexico','Mexican',TRUE,TRUE,FALSE),
-('Bangkok Street Bites','Thailand','Thai',TRUE,FALSE,TRUE),
-('Mediterranean Garden','Greece','Mediterranean',TRUE,TRUE,TRUE),
-('Berlin Sausage Hall','Germany','German',FALSE,FALSE,FALSE),
-('Seoul BBQ Corner','South Korea','Korean',FALSE,TRUE,FALSE),
-('Cairo Spice Market','Egypt','Middle Eastern',TRUE,FALSE,FALSE),
-('Istanbul Kebab House','Turkey','Turkish',TRUE,TRUE,TRUE),
-('Rio Grill House','Brazil','Brazilian',FALSE,TRUE,FALSE),
-('Maple Leaf Diner','Canada','Canadian',TRUE,TRUE,TRUE),
-('Sydney Seafood Shack','Australia','Seafood',TRUE,FALSE,FALSE),
-('Cape Town Braai','South Africa','African',FALSE,FALSE,FALSE),
-('Lisbon Ocean Table','Portugal','Portuguese',TRUE,TRUE,FALSE),
-('Barcelona Tapas Bar','Spain','Spanish',FALSE,TRUE,FALSE),
-('Havana Nights Cafe','Cuba','Caribbean',TRUE,FALSE,FALSE),
-('Peruvian Andes Kitchen','Peru','Peruvian',TRUE,TRUE,TRUE),
-('Buenos Aires Steakhouse','Argentina','Steakhouse',FALSE,TRUE,FALSE),
-('Viking Feast Hall','Norway','Nordic',TRUE,FALSE,FALSE),
-('Stockholm Fish Market','Sweden','Seafood',TRUE,TRUE,TRUE),
-('Dublin Pub Kitchen','Ireland','Irish',FALSE,FALSE,FALSE),
-('Prague Castle Tavern','Czech Republic','Eastern European',FALSE,TRUE,FALSE),
-('Budapest Paprika House','Hungary','Hungarian',TRUE,FALSE,FALSE),
-('Warsaw Pierogi Bar','Poland','Polish',FALSE,FALSE,FALSE),
-('Athens Olive Table','Greece','Greek',TRUE,TRUE,TRUE),
-('Alexandria Falafel Corner','Egypt','Middle Eastern',TRUE,TRUE,TRUE),
-('Beirut Cedar Grill','Lebanon','Lebanese',TRUE,FALSE,FALSE),
-('Dubai Desert Kitchen','UAE','Arabic',TRUE,TRUE,TRUE),
-('Tehran Saffron House','Iran','Persian',TRUE,FALSE,FALSE),
-('Kathmandu Spice Cafe','Nepal','Nepalese',TRUE,FALSE,FALSE),
-('Hanoi Pho Corner','Vietnam','Vietnamese',TRUE,TRUE,TRUE),
-('Manila Street Eats','Philippines','Filipino',FALSE,FALSE,FALSE),
-('Jakarta Satay Grill','Indonesia','Indonesian',TRUE,FALSE,FALSE),
-('Kuala Lumpur Spice Hub','Malaysia','Malaysian',TRUE,TRUE,FALSE),
-('Singapore Fusion Kitchen','Singapore','Fusion',TRUE,TRUE,TRUE),
-('Taipei Dumpling House','Taiwan','Taiwanese',FALSE,FALSE,FALSE),
-('Moscow Red Square Cafe','Russia','Russian',FALSE,FALSE,FALSE),
-('Zurich Alpine Table','Switzerland','Swiss',TRUE,TRUE,FALSE),
-('Vienna Schnitzel Haus','Austria','Austrian',FALSE,TRUE,FALSE),
-('Brussels Waffle Corner','Belgium','Belgian',FALSE,FALSE,FALSE),
-('Amsterdam Canal Bistro','Netherlands','Dutch',TRUE,FALSE,FALSE),
-('Copenhagen Nordic Kitchen','Denmark','Nordic',TRUE,TRUE,TRUE),
-('Reykjavik Ice Grill','Iceland','Nordic',TRUE,FALSE,FALSE),
-('Helsinki Harbor Cafe','Finland','Nordic',TRUE,TRUE,TRUE),
-('Tallinn Old Town Kitchen','Estonia','Baltic',TRUE,FALSE,FALSE),
-('Riga Baltic Bites','Latvia','Baltic',TRUE,FALSE,FALSE),
-('Vilnius Forest Table','Lithuania','Baltic',TRUE,TRUE,FALSE);
-
-/*test reviews*/
-INSERT INTO restaurant_review (rating, text, restaurant_id, date) VALUES (5, 'Excellent food and great service!', 1, '2024-06-01');
-INSERT INTO restaurant_review (rating, text, restaurant_id, date) VALUES (4, 'Nice atmosphere and tasty dishes.', 1, '2024-06-02');
->>>>>>> d8571a2f456e8fea9d21c7a4a6e4182e8331b3e9
 /*commented out so other stuff can be tested
 
 ##### INCOMPLETE SINCE USERS IS NOT DEFINED YET ######

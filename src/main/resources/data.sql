@@ -1,5 +1,4 @@
 INSERT INTO recipe (name, ingredients, instructions, gluten_free, featured) VALUES
-/*if the first recipe gets removed we'll have to update the recipe automated tests*/
 ('Avocado Egg Breakfast Bowl', 'eggs, avocado, spinach, salt', 'Cook eggs and assemble bowl.', TRUE, TRUE), 
 ('Classic Pancakes', 'flour, milk, eggs, sugar', 'Mix batter and cook on griddle.', FALSE, TRUE),
 ('Chicken Stir Fry', 'chicken, broccoli, soy sauce, garlic', 'Stir fry chicken and vegetables.', TRUE, TRUE),
@@ -51,7 +50,6 @@ INSERT INTO recipe (name, ingredients, instructions, gluten_free, featured) VALU
 ('Grilled Halloumi Salad', 'halloumi, lettuce, tomato', 'Grill cheese and mix salad.', TRUE, FALSE),
 ('Chicken Rice Bowl', 'chicken, rice, vegetables', 'Cook chicken and assemble bowl.', TRUE, FALSE);
 
-<<<<<<< HEAD
 INSERT INTO restaurant (name, location, cuisine_type, gluten_free, featured, celiac_certified)
 VALUES
     ('Riz Gluten-Free Asian Kitchen', '3471 Yonge St, North York, Toronto, ON', 'Asian', TRUE, TRUE, TRUE),

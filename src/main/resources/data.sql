@@ -73,6 +73,7 @@ VALUES
     ('Volos Greek Cuisine', '133 Richmond St W, Toronto, ON', 'Greek', TRUE, FALSE, FALSE),
     ('Barque Smokehouse Roncesvalles', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', TRUE, FALSE, FALSE);
 
+INSERT INTO restaurant_review (rating, text, restaurant_id, date) VALUES (5, 'Excellent food and great service!', 1, '2024-06-01');
 /*commented out so other stuff can be tested
 
 ##### INCOMPLETE SINCE USERS IS NOT DEFINED YET ######

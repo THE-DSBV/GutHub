@@ -17,6 +17,7 @@ public class Recipe {
     private String instructions; //Add this
     private boolean glutenFree;
     private boolean featured;
+    private String createdBy;
     @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<RecipeReview> reviews;
     @Transient
@@ -99,5 +100,13 @@ public class Recipe {
 
     public void setFeatured(Boolean featured) {
         this.featured = featured;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }

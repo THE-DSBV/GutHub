@@ -73,33 +73,37 @@ VALUES
     ('Volos Greek Cuisine', '133 Richmond St W, Toronto, ON', 'Greek', TRUE, FALSE, FALSE),
     ('Barque Smokehouse Roncesvalles', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', TRUE, FALSE, FALSE);
 
-INSERT INTO restaurant_review (rating, text, restaurant_id, date) VALUES (5, 'Excellent food and great service!', 1, '2024-06-01');
-/*commented out so other stuff can be tested
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('john_doe', 'hello-johnDoe:)', 'john@Doe.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('jane_smith', 'password123', 'jane@smith.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Duncan Volk', 'goat', 'duncanvolk@rogers.com', 2026, true);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Alice Johnson', 'alice2026', 'alice@johnson.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Bob Brown', 'bob2026', 'bob@brown.com', 2026, false);
 
-##### INCOMPLETE SINCE USERS IS NOT DEFINED YET ######
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (1, 5, 'Excellent food and great service!', 1);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (2, 4, 'Nice atmosphere and tasty dishes.', 2);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (3, 3, 'Food was decent but service was slow.', 3);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (4, 5, 'Absolutely loved the gluten-free options!', 4);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (5, 4, 'Great spot for dinner with friends.', 5);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (6, 2, 'Food was cold when it arrived.', 6);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (7, 5, 'Fantastic experience overall!', 7);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (8, 4, 'Very good food, would come again.', 8);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (9, 3, 'Average experience but not bad.', 9);
-INSERT INTO restaurant_review (user_id, rating, text, restaurant_id) VALUES (10, 5, 'One of my favorite restaurants now!', 10);
 
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (1, 5, 'Amazing recipe, very easy to follow!', 1);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (2, 4, 'Tasted great but I added more seasoning.', 2);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (3, 3, 'Decent but the instructions were slightly confusing.', 3);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (4, 5, 'Perfect! Will definitely make again.', 4);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (5, 4, 'Really good, family loved it.', 5);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (6, 2, 'Not my favorite, a bit bland.', 6);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (7, 5, 'Fantastic flavor and simple ingredients.', 7);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (8, 4, 'Turned out very well, good instructions.', 8);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (9, 3, 'It was okay, might tweak it next time.', 9);
-INSERT INTO recipe_review (user_id, rating, text, recipe_id) VALUES (10, 5, 'Loved it! One of the best recipes I tried.', 10);
 
-####### THESE DO NOT HAVE ENTITIES, CONTROLLERS, OR REPOSITORIES YET ########
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('john_doe', 5, 'Excellent food and great service!', 1, '2024-06-01');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('jane_smith', 4, 'Nice atmosphere and tasty dishes.', 2, '2024-06-02');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('Duncan Volk', 3, 'Food was decent but service was slow.', 3, '2024-06-03');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('Alice Johnson', 5, 'Absolutely loved the gluten-free options!', 4, '2024-06-04');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('Bob Brown', 4, 'Great spot for dinner with friends.', 5, '2024-06-05');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('john_doe', 2, 'Food was cold when it arrived.', 6, '2024-06-06');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('jane_smith', 5, 'Fantastic experience overall!', 7, '2024-06-07');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('Duncan Volk', 4, 'Very good food, would come again.', 8, '2024-06-08');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('Alice Johnson', 3, 'Average experience but not bad.', 9, '2024-06-09');
+INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES ('Bob Brown', 5, 'One of my favorite restaurants now!', 10, '2024-06-10');
+
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('john_doe', 5, 'Amazing recipe, very easy to follow!', 1, '2024-06-01');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('jane_smith', 4, 'Tasted great but I added more seasoning.', 2, '2024-06-02');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('Duncan Volk', 3, 'Decent but the instructions were slightly confusing.', 3, '2024-06-03');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('Alice Johnson', 5, 'Loved it, will make it again!', 4, '2024-06-04');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('john_doe', 2, 'Not my favorite, a bit bland.', 6, '2024-06-06');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('jane_smith', 5, 'Fantastic recipe, will be a staple in my kitchen!', 7, '2024-06-07');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('Duncan Volk', 4, 'Very good, but I substituted an ingredient.', 8, '2024-06-08');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('Alice Johnson', 3, 'It was okay, not bad but not great.', 9, '2024-06-09');
+INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES ('Bob Brown', 5, 'Absolutely loved it, will make it again soon!', 10, '2024-06-10');
+
+
+/*
 INSERT INTO menu_items (restaurant_id, item_name, celiac_certified)
 (1, 'sloppy tony', TRUE)
 

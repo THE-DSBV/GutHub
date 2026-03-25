@@ -11,9 +11,13 @@ public class User {
     @Id
     private String username;
 
+    private String email;
+
+    private int yearJoined;
+
     private String password;
 
-    private Boolean isAdmin = false;
+    private Boolean isAdmin;
 
     public User() {}
 
@@ -46,5 +50,21 @@ public class User {
 
     public void setIsAdmin(Boolean isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getYearJoined() {
+        return yearJoined;
+    }
+
+    public void setYearJoined(int yearJoined) {
+        this.yearJoined = yearJoined;
     }
 }

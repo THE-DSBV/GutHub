@@ -15,6 +15,7 @@ public class Restaurant {
     private Boolean glutenFree;
     private Boolean featured;
     private Boolean celiacCertified;
+    private String createdBy;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<RestaurantReview> reviews;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
@@ -119,6 +120,13 @@ public class Restaurant {
         }
         return sum / reviews.size();
     }
-    
-    
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
 }

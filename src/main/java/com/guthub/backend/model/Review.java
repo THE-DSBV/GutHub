@@ -52,6 +52,7 @@ public abstract class Review {
     }
 
     public void setRating(int rating) {
+
         if (rating != 0 && (rating < 1 || rating > 10)) {
             throw new IllegalArgumentException("Rating must be between 1 and 10");
         }

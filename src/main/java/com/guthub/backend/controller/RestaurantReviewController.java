@@ -1,6 +1,7 @@
 package com.guthub.backend.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.model.RestaurantReview;
+import com.guthub.backend.model.User;
 import com.guthub.backend.repository.RestaurantRepository;
 import com.guthub.backend.repository.RestaurantReviewRepository;
+import com.guthub.backend.repository.UserRepository;
 
 @RestController
 @RequestMapping("/restaurant-reviews")
@@ -23,10 +26,12 @@ public class RestaurantReviewController {
 
     private final RestaurantReviewRepository restaurantReviewRepository;
     private final RestaurantRepository restaurantRepository;
+    private final UserRepository userRepository;
 
-    public RestaurantReviewController(RestaurantReviewRepository restaurantReviewRepository, RestaurantRepository restaurantRepository) {
+    public RestaurantReviewController(RestaurantReviewRepository restaurantReviewRepository, RestaurantRepository restaurantRepository, UserRepository userRepository) {
         this.restaurantReviewRepository = restaurantReviewRepository;
         this.restaurantRepository = restaurantRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping
@@ -61,5 +66,28 @@ public class RestaurantReviewController {
     @DeleteMapping("/{id}")
     public void deleteRestaurantReview(@PathVariable Long id) {
         restaurantReviewRepository.deleteById(id);
+    }
+
+    @PostMapping("/restaurant/{restaurantId}")
+    public RestaurantReview addReviewToRecipe(@PathVariable Long restaurantId, @RequestBody Map<String, Object> body) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        String username = (String) body.get("username");
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        RestaurantReview review = new RestaurantReview();
+        review.setRestaurant(restaurant);
+        review.setUser(user);
+
+        if (body.get("rating") != null) {
+            review.setRating((int) body.get("rating"));
+        }
+        if (body.get("text") != null) {
+            review.setText((String) body.get("text"));
+        }
+
+        return restaurantReviewRepository.save(review);
     }
 }

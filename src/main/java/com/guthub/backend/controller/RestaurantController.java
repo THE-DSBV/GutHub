@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.guthub.backend.controller.dto.MenuItemDTO;
 import com.guthub.backend.model.MenuItem;
 import com.guthub.backend.model.Restaurant;
-import com.guthub.backend.model.RestaurantReview;
 import com.guthub.backend.repository.RestaurantRepository;
 
 // Available API endpoints:
@@ -38,7 +37,9 @@ public class RestaurantController {
     @GetMapping
     public List<Restaurant> getAllRestaurants(
             @RequestParam(required = false) String cuisine,
-            @RequestParam(required = false) Double minRating) {
+            @RequestParam(required = false) Double minRating,
+            @RequestParam(required = false) Boolean glutenFree,
+            @RequestParam(required = false) Boolean celiacCertified) {
 
         List<Restaurant> restaurants = restaurantRepository.findAll();
 
@@ -53,6 +54,19 @@ public class RestaurantController {
                     .filter(r -> r.getAverageRating() >= minRating)
                     .toList();
         }
+
+        if (glutenFree != null) {
+        restaurants = restaurants.stream()
+                .filter(r -> r.isGlutenFree() != null && r.isGlutenFree().equals(glutenFree))
+                .toList();
+        }
+
+        if (celiacCertified != null) {
+            restaurants = restaurants.stream()
+                    .filter(r -> r.isCeliacCertified() != null && r.isCeliacCertified().equals(celiacCertified))
+                    .toList();
+        }
+        
         restaurants.forEach(r -> {
             if (r.getMenuItems() != null) {
                 r.setMenuItems(r.getMenuItems().stream()

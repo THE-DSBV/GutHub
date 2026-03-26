@@ -2,6 +2,8 @@ package com.guthub.backend.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import io.micrometer.common.lang.Nullable;
+
 @Entity
 public class Restaurant {
 
@@ -22,6 +24,8 @@ public class Restaurant {
     private List<MenuItem> menuItems;
     @Transient
     private Double averageRating;
+    @Nullable
+    private String imageUrl;
 
 
 
@@ -127,6 +131,14 @@ public class Restaurant {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

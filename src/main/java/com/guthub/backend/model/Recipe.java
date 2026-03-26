@@ -14,7 +14,7 @@ public class Recipe {
 
     private String name;
     private String ingredients;
-    private String instructions; //Add this
+    private String instructions;
     private boolean glutenFree;
     private boolean featured;
     private String createdBy;
@@ -22,6 +22,8 @@ public class Recipe {
     private List<RecipeReview> reviews;
     @Transient
     private Double averageRating;
+    @Nullable
+    private String imageUrl;
 
 
     public Recipe() {}
@@ -108,6 +110,14 @@ public class Recipe {
 
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

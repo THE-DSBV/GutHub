@@ -69,7 +69,7 @@ public class RestaurantReviewController {
     }
 
     @PostMapping("/restaurant/{restaurantId}")
-    public RestaurantReview addReviewToRecipe(@PathVariable Long restaurantId, @RequestBody Map<String, Object> body) {
+    public RestaurantReview addReviewToRestaurant(@PathVariable Long restaurantId, @RequestBody Map<String, Object> body) {
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(() -> new RuntimeException("Restaurant not found"));
 

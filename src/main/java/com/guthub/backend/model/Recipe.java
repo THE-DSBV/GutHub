@@ -1,9 +1,15 @@
 package com.guthub.backend.model;
 
-import jakarta.persistence.*;
 import java.util.List;
 
 import io.micrometer.common.lang.Nullable;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Recipe {
@@ -15,8 +21,8 @@ public class Recipe {
     private String name;
     private String ingredients;
     private String instructions;
-    private boolean glutenFree;
-    private boolean featured;
+    private Boolean glutenFree;
+    private Boolean featured;
     private String createdBy;
     @OneToMany (mappedBy = "recipe", cascade = CascadeType.ALL)
     private List<RecipeReview> reviews;
@@ -28,7 +34,7 @@ public class Recipe {
 
     public Recipe() {}
 
-    public Recipe(String name, String ingredients, String instructions, boolean glutenFree, boolean featured) {
+    public Recipe(String name, String ingredients, String instructions, Boolean glutenFree, Boolean featured) {
         this.name = name;
         this.ingredients = ingredients;
         this.instructions = instructions;
@@ -69,11 +75,11 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    public boolean isGlutenFree() {
+    public Boolean isGlutenFree() {
         return glutenFree;
     }
 
-    public void setGlutenFree(boolean glutenFree) {
+    public void setGlutenFree(Boolean glutenFree) {
         this.glutenFree = glutenFree;
     }
 

@@ -76,7 +76,7 @@ VALUES
     ('Riz Gluten-Free Asian Kitchen', '3471 Yonge St, North York, Toronto, ON', 'Asian', TRUE, TRUE, TRUE, 'https://img1.wsimg.com/isteam/ip/93931ff2-b781-4044-852e-209e442baf22/RGF%20(3).jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:984,h:984'),
     ('Almond Butterfly Bistro', '792 Dundas St W, Toronto, ON', 'Canadian', TRUE, TRUE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ddb0494f-7174-4c61-b1ee-cff6eb5d37b0/blade.sign.2.jpg?format=2500w'),
     ('Almond Butterfly Bakeshop & Cafe', '100 Harbord St, Toronto, ON', 'Bakery/Cafe', TRUE, FALSE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ebe9094f-3ea8-4c6c-8fcf-97716dc60a69/harbord.people.stools.jpg?format=1500w'),
-    ('El Pocho Antojitos Bar', '2 Follis Ave, Toronto, ON', 'Mexican', TRUE, TRUE, TRUE, 'https://d2kihw5e8drjh5.cloudfront.net/eyJidWNrZXQiOiJ1dGEtaW1hZ2VzIiwia2V5IjoicGxhY2VfaW1nL2I4ODMzYjM2OTQ2ZjRhNjU4YzBiODU3M2EzNjhjM2ZiIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo2NDAsImhlaWdodCI6NjQwLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJ0b0Zvcm1hdCI6ICJ3ZWJwIn19'),
+    ('El Pocho Antojitos Bar', '2 Follis Ave, Toronto, ON', 'Mexican', TRUE, TRUE, TRUE, NULL),
     ('Bunners Bakeshop', '244 Augusta Ave, Toronto, ON', 'Bakery', TRUE, FALSE, TRUE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/72/fb/af/caption.jpg?w=500&h=-1&s=1'),
     ('The Dirty Bird Chicken & Waffles', '79 Kensington Ave, Toronto, ON', 'American', TRUE, FALSE, FALSE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/62/4c/96/photo0jpg.jpg?w=1200&h=-1&s=1'),
     ('Riz on St. Clair', '760 St. Clair Ave W, Toronto, ON', 'Asian', TRUE, FALSE, TRUE, 'https://www.rizonstclair.com/wp-content/uploads/2020/07/riz-stclair-patio-1.jpg'),
@@ -96,9 +96,9 @@ VALUES
 
 INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('john_doe', 'hello-johnDoe:)', 'john@Doe.com', 2026, false);
 INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('jane_smith', 'password123', 'jane@smith.com', 2026, false);
-INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Duncan Volk', 'goat', 'duncanvolk@rogers.com', 2026, true);
-INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Alice Johnson', 'alice2026', 'alice@johnson.com', 2026, false);
-INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Bob Brown', 'bob2026', 'bob@brown.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('duncan_volk', 'goat', 'duncanvolk@rogers.com', 2026, true);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('alice_johnson', 'alice2026', 'alice@johnson.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('bob_brown', 'bob2026', 'bob@brown.com', 2026, false);
 
 
 

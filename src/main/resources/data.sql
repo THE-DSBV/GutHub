@@ -9,31 +9,31 @@ INSERT INTO recipe (name, ingredients, instructions, gluten_free, featured, imag
  'https://iowagirleats.com/wp-content/uploads/2025/01/Chicken-and-Broccoli-iowagirleats-Featured.jpg'), 
 ('Quinoa Veggie Salad', 'quinoa, cucumber, tomato, olive oil', 
  '1. Cook quinoa until fluffy. 2. Chop vegetables. 3. Mix quinoa with vegetables. 4. Drizzle olive oil and season. 5. Chill before serving.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://www.healthygffamily.com/wp-content/uploads/2018/03/IMG_3666.jpg'), 
 ('Baked Salmon', 'salmon, lemon, garlic, olive oil', 
  '1. Preheat oven to 375°F (190°C). 2. Season salmon with garlic and lemon. 3. Place on baking tray. 4. Bake 15-20 minutes. 5. Serve with sides.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://assets.epicurious.com/photos/62d6c5146b6e74298a39d06a/4:3/w_4031,h_3023,c_limit/BakedSalmon_RECIPE_04142022_9780_final.jpg'), 
 ('Vegetable Omelette', 'eggs, peppers, onions, cheese', 
  '1. Chop vegetables. 2. Whisk eggs and season. 3. Heat pan and sauté vegetables. 4. Pour eggs over vegetables. 5. Cook until set and fold omelette.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://www.liveeatlearn.com/wp-content/uploads/2020/12/vegetarian-denver-omelette-vert-500x500.jpg'), 
 ('Zucchini Noodles', 'zucchini, tomato sauce, garlic', 
  '1. Spiralize zucchini. 2. Heat tomato sauce in a pan. 3. Sauté zucchini lightly. 4. Combine with sauce. 5. Serve warm.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://www.cookingclassy.com/wp-content/uploads/2021/08/zucchini-noodles-04.jpg'), 
 ('Grilled Fish Tacos', 'fish, corn tortillas, cabbage', 
  '1. Season fish with spices. 2. Grill fish until cooked. 3. Warm tortillas. 4. Assemble tacos with cabbage. 5. Serve with lime.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://healthstartsinthekitchen.com/wp-content/uploads/2019/01/Grilled-Fish-Tacos-with-Fermented-Cilantro-Kefir-Sauce-Gluten-Free-FEATURE-01.jpg'), 
 ('Sweet Potato Bowl', 'sweet potato, rice, avocado', 
  '1. Peel and cube sweet potatoes. 2. Roast sweet potatoes. 3. Cook rice. 4. Assemble bowl with avocado. 5. Drizzle dressing and serve.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://www.thissavoryvegan.com/wp-content/uploads/2023/11/sweet-potato-couscous-bowls-2.jpg'), 
 ('Caprese Salad', 'tomato, mozzarella, basil', 
  '1. Slice tomatoes and mozzarella. 2. Arrange on plate. 3. Add basil leaves. 4. Drizzle olive oil and balsamic. 5. Serve chilled.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F3b432b41ce04c96a08d77befa42b9881a587a436'), 
 ('Cobb Salad', 'chicken, bacon, lettuce, egg', 
  '1. Cook chicken and bacon. 2. Hard boil eggs. 3. Chop lettuce. 4. Assemble salad with all ingredients. 5. Serve with dressing.', 
- TRUE, TRUE, NULL), 
+ TRUE, TRUE, 'https://www.allrecipes.com/thmb/lUCXnzWTl9WOQ9NRAT08hA4O2lE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/14415-cobb-salad-DDMFS-4x3-608ba9c5768b49079eb75fe9a9898307.jpg'), 
 ('Classic Pancakes', 'flour, milk, eggs, sugar', 'Mix batter and cook on griddle.', FALSE, FALSE, 'https://hips.hearstapps.com/hmg-prod/images/best-homemade-pancakes-index-640775a2dbad8.jpg?crop=0.6667877686951256xw:1xh;center,top&resize=1200:*'),
-('Beef Tacos', 'beef, tortillas, lettuce, cheese', 'Cook beef and assemble tacos.', FALSE, FALSE, NULL),
-('Spaghetti Marinara', 'spaghetti, tomato sauce, garlic', 'Cook pasta and mix with sauce.', FALSE, FALSE, NULL),
+('Beef Tacos', 'beef, tortillas, lettuce, cheese', 'Cook beef and assemble tacos.', FALSE, FALSE, 'https://kaylacappiello.com/wp-content/uploads/2025/01/Ground-beef-Gluten-Free-Tacos-.jpeg'),
+('Spaghetti Marinara', 'spaghetti, tomato sauce, garlic', 'Cook pasta and mix with sauce.', FALSE, FALSE, ),
 ('Chicken Caesar Wrap', 'chicken, tortilla, lettuce, dressing', 'Wrap chicken and lettuce.', FALSE, FALSE, NULL),
 ('Shrimp Fried Rice', 'rice, shrimp, soy sauce, eggs', 'Stir fry shrimp and rice.', FALSE, FALSE, NULL),
 ('Lentil Soup', 'lentils, carrots, onion, garlic', 'Simmer lentils with vegetables.', TRUE, FALSE, NULL),
@@ -71,33 +71,36 @@ INSERT INTO recipe (name, ingredients, instructions, gluten_free, featured, imag
 ('Grilled Halloumi Salad', 'halloumi, lettuce, tomato', 'Grill cheese and mix salad.', TRUE, FALSE, NULL),
 ('Chicken Rice Bowl', 'chicken, rice, vegetables', 'Cook chicken and assemble bowl.', TRUE, FALSE, NULL);
 
-INSERT INTO restaurant (name, location, cuisine_type, gluten_free, featured, celiac_certified, image_url) VALUES
-('Riz Gluten-Free Asian Kitchen', '3471 Yonge St, North York, Toronto, ON', 'Asian', TRUE, TRUE, TRUE, 'https://img1.wsimg.com/isteam/ip/93931ff2-b781-4044-852e-209e442baf22/RGF%20(3).jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:984,h:984'),
-('Almond Butterfly Bistro', '792 Dundas St W, Toronto, ON', 'Canadian', TRUE, TRUE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ddb0494f-7174-4c61-b1ee-cff6eb5d37b0/blade.sign.2.jpg?format=2500w'),
-('Almond Butterfly Bakeshop & Cafe', '100 Harbord St, Toronto, ON', 'Bakery/Cafe', TRUE, TRUE, TRUE, NULL),
-('El Pocho Antojitos Bar', '2 Follis Ave, Toronto, ON', 'Mexican', TRUE, TRUE, TRUE, NULL),
-('Bunners Bakeshop', '244 Augusta Ave, Toronto, ON', 'Bakery', TRUE, TRUE, TRUE, NULL),
-('Riz on St. Clair', '760 St. Clair Ave W, Toronto, ON', 'Asian', TRUE, TRUE, TRUE, NULL),
-('The Dirty Bird Chicken & Waffles', '79 Kensington Ave, Toronto, ON', 'American', FALSE, FALSE, FALSE, NULL),
-('Barque Smokehouse', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', FALSE, FALSE, FALSE, NULL),
-('Bangkok Garden', '18 Elm St, Toronto, ON', 'Thai', FALSE, FALSE, FALSE, NULL),
-('The Basil Box', '460 Yonge St, Toronto, ON', 'Southeast Asian', FALSE, FALSE, FALSE, NULL),
-('Senla Vietnamese', '133 Richmond St W, Toronto, ON', 'Vietnamese', TRUE, FALSE, FALSE, NULL),
-('Impact Kitchen Corktown', '573 King St E, Toronto, ON', 'Health/Bowls', TRUE, FALSE, FALSE, NULL),
-('Impact Kitchen King West', '444 Adelaide St W, Toronto, ON', 'Health/Bowls', TRUE, FALSE, FALSE, NULL),
-('Kupfert & Kim', '100 King St W, Toronto, ON', 'Plant-Based', TRUE, FALSE, FALSE, NULL),
-('On Third Thought', '6 Markham St, Toronto, ON', 'Dessert/Gelato', TRUE, FALSE, FALSE, NULL),
-('Playa Cabana', '111 Dupont St, Toronto, ON', 'Mexican', FALSE, FALSE, FALSE, NULL),
-('Byblos Downtown', '11 Duncan St, Toronto, ON', 'Mediterranean', FALSE, FALSE, FALSE, NULL),
-('Bar Isabel', '797 College St, Toronto, ON', 'Spanish', FALSE, FALSE, FALSE, NULL),
-('Volos Greek Cuisine', '133 Richmond St W, Toronto, ON', 'Greek', TRUE, FALSE, FALSE, NULL),
-('Barque Smokehouse Roncesvalles', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', FALSE, FALSE, FALSE, NULL);
+INSERT INTO restaurant (name, location, cuisine_type, gluten_free, featured, celiac_certified, image_url)
+VALUES
+    ('Riz Gluten-Free Asian Kitchen', '3471 Yonge St, North York, Toronto, ON', 'Asian', TRUE, TRUE, TRUE, 'https://img1.wsimg.com/isteam/ip/93931ff2-b781-4044-852e-209e442baf22/RGF%20(3).jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:984,h:984'),
+    ('Almond Butterfly Bistro', '792 Dundas St W, Toronto, ON', 'Canadian', TRUE, TRUE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ddb0494f-7174-4c61-b1ee-cff6eb5d37b0/blade.sign.2.jpg?format=2500w'),
+    ('Almond Butterfly Bakeshop & Cafe', '100 Harbord St, Toronto, ON', 'Bakery/Cafe', TRUE, FALSE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ebe9094f-3ea8-4c6c-8fcf-97716dc60a69/harbord.people.stools.jpg?format=1500w'),
+    ('El Pocho Antojitos Bar', '2 Follis Ave, Toronto, ON', 'Mexican', TRUE, TRUE, TRUE, 'https://d2kihw5e8drjh5.cloudfront.net/eyJidWNrZXQiOiJ1dGEtaW1hZ2VzIiwia2V5IjoicGxhY2VfaW1nL2I4ODMzYjM2OTQ2ZjRhNjU4YzBiODU3M2EzNjhjM2ZiIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo2NDAsImhlaWdodCI6NjQwLCJmaXQiOiJpbnNpZGUifSwicm90YXRlIjpudWxsLCJ0b0Zvcm1hdCI6ICJ3ZWJwIn19'),
+    ('Bunners Bakeshop', '244 Augusta Ave, Toronto, ON', 'Bakery', TRUE, FALSE, TRUE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/72/fb/af/caption.jpg?w=500&h=-1&s=1'),
+    ('The Dirty Bird Chicken & Waffles', '79 Kensington Ave, Toronto, ON', 'American', TRUE, FALSE, FALSE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/62/4c/96/photo0jpg.jpg?w=1200&h=-1&s=1'),
+    ('Riz on St. Clair', '760 St. Clair Ave W, Toronto, ON', 'Asian', TRUE, FALSE, TRUE, 'https://www.rizonstclair.com/wp-content/uploads/2020/07/riz-stclair-patio-1.jpg'),
+    ('Barque Smokehouse', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', TRUE, FALSE, FALSE, 'https://roncesvallesvillage.ca/wp-content/uploads/2019/08/Barque-Exterior.jpg'),
+    ('Bangkok Garden', '18 Elm St, Toronto, ON', 'Thai', TRUE, FALSE, FALSE, 'https://media.blogto.com/uploads/2023/01/13/1673621395-20230110-BangkokGarden-1.jpg'),
+    ('The Basil Box', '460 Yonge St, Toronto, ON', 'Southeast Asian', TRUE, FALSE, FALSE, 'https://farm5.staticflickr.com/4213/35785346261_f0a1e270e5_o.jpg'),
+    ('Senla Vietnamese', '133 Richmond St W, Toronto, ON', 'Vietnamese', TRUE, TRUE, TRUE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/37/ea/6e/soupe-de-nouilles-de.jpg?w=1200&h=1200&s=1'),
+    ('Impact Kitchen Corktown', '573 King St E, Toronto, ON', 'Health/Bowls', TRUE, FALSE, TRUE, 'https://wanderingcarol.com/wp-content/uploads/2018/10/Where-to-eat-in-East-Toronto-Impact-Kitchen-.jpg'),
+    ('Impact Kitchen King West', '444 Adelaide St W, Toronto, ON', 'Health/Bowls', TRUE, FALSE, TRUE, 'https://retailinsider.b-cdn.net/wp-content/uploads/2018/06/ImpactKitchen-1-696x464.jpeg'),
+    ('Kupfert & Kim', '100 King St W, Toronto, ON', 'Plant-Based', TRUE, FALSE, TRUE, 'https://torontolife.mblycdn.com/tl/resized/2015/12/w1280/toronto-new-vegan-restaurants-kupfert-and-kim-queen-west-exterior.jpg'),
+    ('On Third Thought', '6 Markham St, Toronto, ON', 'Dessert/Gelato', TRUE, FALSE, TRUE, 'https://media.blogto.com/uploads/2021/06/04/1622823923-20210306-OnThirdThought-18.jpg?w=1400&cmd=resize&height=2500&quality=70'),
+    ('Playa Cabana', '111 Dupont St, Toronto, ON', 'Mexican', TRUE, FALSE, FALSE, 'https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2011/06/cabana.jpg'),
+    ('Byblos Downtown', '11 Duncan St, Toronto, ON', 'Mediterranean', TRUE, FALSE, FALSE, 'https://fortwoplz.com/wp-content/uploads/2016/08/Byblos-Toronto-11.jpg'),
+    ('Bar Isabel', '797 College St, Toronto, ON', 'Spanish', TRUE, FALSE, FALSE, 'https://www.chuonthis.ca/wp-content/uploads/2022/05/Bar-Isabel-4-1024x683.jpg'),
+    ('Volos Greek Cuisine', '133 Richmond St W, Toronto, ON', 'Greek', TRUE, FALSE, FALSE, 'https://lh3.googleusercontent.com/gps-cs-s/AHVAwepkwaG7pNAXEBv6l5L-CtPsPQit_NDRCZOjxl2FP2QvM-yE61EPpyyKDi7YpAYk70PuU-u0K54IvFvPp1mZiYw9Io4LFfVWSNKYp532y-f3smcU9Xt0lenRf_U4f9lA_1h98h87SUDj5y8=s680-w680-h510-rw'),
+    ('Barque Smokehouse Roncesvalles', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', TRUE, FALSE, FALSE, 'https://cdn.restaurants-info.com/barquesmokehouse/24895-albums-1.jpg');
 
 INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('john_doe', 'hello-johnDoe:)', 'john@Doe.com', 2026, false);
 INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('jane_smith', 'password123', 'jane@smith.com', 2026, false);
-INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('duncan_volk', 'goat', 'duncanvolk@rogers.com', 2026, true);
-INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('alice_johnson', 'alice2026', 'alice@johnson.com', 2026, false);
-INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('bob_brown', 'bob2026', 'bob@brown.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Duncan Volk', 'goat', 'duncanvolk@rogers.com', 2026, true);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Alice Johnson', 'alice2026', 'alice@johnson.com', 2026, false);
+INSERT INTO users (username, password, email, year_joined, is_admin) VALUES ('Bob Brown', 'bob2026', 'bob@brown.com', 2026, false);
+
+
 
 INSERT INTO restaurant_review (username, rating, text, restaurant_id, date) VALUES
 ('john_doe', 9, 'Excellent food and great service!', 1, '2024-06-01'),

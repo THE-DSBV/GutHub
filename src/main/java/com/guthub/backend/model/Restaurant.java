@@ -122,7 +122,8 @@ public class Restaurant {
         for (RestaurantReview review : reviews) {
             sum += review.getRating();
         }
-        return sum / reviews.size();
+        double avg = sum / reviews.size();
+        return Math.round(avg * 10.0) / 10.0;
     }
 
     public String getCreatedBy() {

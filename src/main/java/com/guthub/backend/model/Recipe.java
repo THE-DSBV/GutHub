@@ -99,6 +99,8 @@ public class Recipe {
         for (RecipeReview review : reviews) {
             sum += review.getRating();
         }
+        double avg = sum / reviews.size();
+        return Math.round(avg * 10.0) / 10.0; 
         return sum / reviews.size();
     }
 

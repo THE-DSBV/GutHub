@@ -101,10 +101,9 @@ public class Recipe {
         }
         double avg = sum / reviews.size();
         return Math.round(avg * 10.0) / 10.0; 
-        return sum / reviews.size();
     }
 
-    public Boolean isFeatured() { // Featured
+    public Boolean isFeatured() {
         return featured;
     }
 

@@ -79,6 +79,7 @@ public class RecipeController {
     public List<Recipe> getTopRated(@PathVariable Double minRating) {
         return recipeRepository.findByMinAverageRating(minRating);
     }
+    
 
     
 }

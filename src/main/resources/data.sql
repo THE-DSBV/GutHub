@@ -77,7 +77,7 @@ VALUES
     ('Almond Butterfly Bistro', '792 Dundas St W, Toronto, ON', 'Canadian', TRUE, TRUE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ddb0494f-7174-4c61-b1ee-cff6eb5d37b0/blade.sign.2.jpg?format=2500w'),
     ('Almond Butterfly Bakeshop & Cafe', '100 Harbord St, Toronto, ON', 'Bakery/Cafe', TRUE, FALSE, TRUE, 'https://images.squarespace-cdn.com/content/v1/5b57c2529d5abb949b8e25a4/ebe9094f-3ea8-4c6c-8fcf-97716dc60a69/harbord.people.stools.jpg?format=1500w'),
     ('El Pocho Antojitos Bar', '2 Follis Ave, Toronto, ON', 'Mexican', TRUE, TRUE, TRUE, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtgzGPWZAUWbfs-Z6-ychCccDHYyOS9oMWAFDqSO1Lag&s'),
-    ('Bunners Bakeshop', '244 Augusta Ave, Toronto, ON', 'Bakery', TRUE, FALSE, TRUE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/72/fb/af/caption.jpg?w=500&h=-1&s=1'),
+    ('Bunners Bakeshop', '244 Augusta Ave, Toronto, ON', 'Bakery', TRUE, TRUE, TRUE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/72/fb/af/caption.jpg?w=500&h=-1&s=1'),
     ('The Dirty Bird Chicken & Waffles', '79 Kensington Ave, Toronto, ON', 'American', TRUE, FALSE, FALSE, 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/62/4c/96/photo0jpg.jpg?w=1200&h=-1&s=1'),
     ('Riz on St. Clair', '760 St. Clair Ave W, Toronto, ON', 'Asian', TRUE, FALSE, TRUE, 'https://www.rizonstclair.com/wp-content/uploads/2020/07/riz-stclair-patio-1.jpg'),
     ('Barque Smokehouse', '299 Roncesvalles Ave, Toronto, ON', 'BBQ', TRUE, FALSE, FALSE, 'https://roncesvallesvillage.ca/wp-content/uploads/2019/08/Barque-Exterior.jpg'),

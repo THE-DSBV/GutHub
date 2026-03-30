@@ -147,6 +147,7 @@ public class RestaurantController {
     }
 
     /* 
+    //moved to main get mapping
     @GetMapping("/moreThan/{minRating}")
     public List<Restaurant> getTopRated(@PathVariable Double minRating) {
         return restaurantRepository.findByMinAverageRating(minRating);

@@ -146,4 +146,5 @@ INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES
 ('jane_smith', 8, 'Fresh ingredients really shine.', 9, '2024-06-02'),
 ('duncan_volk', 10, 'Loved the flavor combo.', 9, '2024-06-03'),
 ('john_doe', 8, 'Very filling salad.', 10, '2024-06-01'),
-('alice_johnson', 10, 'One of my favorites now!', 10, '2024-06-02');
+('alice_johnson', 10, 'One of my favorites now!', 10, '2024-06-02'),
+('bob_brown', 8, 'Good but a bit heavy.',12 , '2024-06-03');

@@ -1,5 +1,7 @@
 package com.guthub.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +21,7 @@ public class MenuItem {
     private Boolean celiacCertified;
 
     @ManyToOne
-
+    @JsonIgnore
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
@@ -28,6 +30,7 @@ public class MenuItem {
     public MenuItem(String itemName, String description, boolean celiacCertified, Restaurant restaurant) {
         this.itemName = itemName;
         this.description = description;
+
         this.celiacCertified = celiacCertified;
         this.restaurant = restaurant;
     }

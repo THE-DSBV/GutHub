@@ -148,3 +148,12 @@ INSERT INTO recipe_review (username, rating, text, recipe_id, date) VALUES
 ('john_doe', 8, 'Very filling salad.', 10, '2026-03-20'),
 ('alice_johnson', 10, 'One of my favorites now!', 10, '2026-03-21'),
 ('bob_brown', 8, 'Good but a bit heavy.', 12, '2026-03-22');
+
+INSERT INTO menu_item (item_name, description, celiac_certified, restaurant_id) VALUES
+('Pad Thai', 'Classic rice noodles with shrimp, peanuts, and tamarind sauce', TRUE, 1),
+('Teriyaki Bowl', 'Grilled chicken over jasmine rice with teriyaki glaze', TRUE, 1),
+('Mango Sticky Rice', 'Sweet glutinous rice with fresh mango and coconut cream', TRUE, 1),
+
+('Eggs Benedict', 'Poached eggs on a gluten-free english muffin with hollandaise', TRUE, 2),
+('Avocado Toast', 'Gluten-free sourdough with smashed avocado and microgreens', TRUE, 2),
+('Buttermilk Pancakes', 'Fluffy gluten-free pancakes with maple syrup and fresh berries', TRUE, 2);

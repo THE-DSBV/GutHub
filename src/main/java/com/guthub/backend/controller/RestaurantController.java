@@ -162,4 +162,12 @@ public class RestaurantController {
         menuItem.isCeliacCertified()
     );  
     }
+
+    @GetMapping("/{id}/menuItems")
+public List<MenuItem> getMenuItemsByRestaurant(@PathVariable Long id) {
+    Restaurant restaurant = restaurantRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Restaurant not found with id " + id));
+    return restaurant.getMenuItems();
+}
+    
 }

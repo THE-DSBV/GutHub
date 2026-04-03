@@ -1,7 +1,12 @@
 package com.guthub.backend.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +31,18 @@ public class User {
         this.password = rawPwd;
         this.isAdmin = false;
     }
+
+    @ManyToMany
+    @JoinTable(name = "favourite_recipes",
+        joinColumns = @JoinColumn(name = "username"),
+        inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+    private List<Recipe> favouriteRecipes;
+
+    @ManyToMany
+    @JoinTable(name = "favourite_restaurants",
+        joinColumns = @JoinColumn(name = "username"),
+        inverseJoinColumns = @JoinColumn(name = "restaurant_id"))
+    private List<Restaurant> favouriteRestaurants;
 
     // Getters and Setters
     public String getUsername() {
@@ -66,5 +83,21 @@ public class User {
 
     public void setYearJoined(int yearJoined) {
         this.yearJoined = yearJoined;
+    }
+
+    public List<Recipe> getFavouriteRecipes() {
+        return favouriteRecipes;
+    }
+
+    public void setFavouriteRecipes(List<Recipe> favouriteRecipes) {
+        this.favouriteRecipes = favouriteRecipes;
+    }
+
+    public List<Restaurant> getFavouriteRestaurants() {
+        return favouriteRestaurants;
+    }
+
+    public void setFavouriteRestaurants(List<Restaurant> favouriteRestaurants) {
+        this.favouriteRestaurants = favouriteRestaurants;
     }
 }

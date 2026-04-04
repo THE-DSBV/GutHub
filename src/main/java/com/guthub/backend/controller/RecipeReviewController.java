@@ -44,9 +44,9 @@ public class RecipeReviewController {
         return recipeReviewRepository.findById(id);
     }
 
+     //This method is useless because addReviewToRecipe is the proper way to create a review, but it's here for completeness sake
     @PostMapping
     public RecipeReview createRecipeReview(@RequestBody RecipeReview review) {
-        // Ensure the recipe exists
         Recipe recipe = recipeRepository.findById(review.getRecipe().getId())
                 .orElseThrow(() -> new RuntimeException("Recipe not found with id " + review.getRecipe().getId()));
         review.setRecipe(recipe);

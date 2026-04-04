@@ -2,33 +2,14 @@ package com.guthub.backend.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Map;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.guthub.backend.model.MenuItem;
+import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.MenuItemRepository;
 import com.guthub.backend.repository.RestaurantRepository;
-
-// Available API endpoints:
-// GET    /menu-items                                        - get all menu items
-// GET    /menu-items/{id}                                   - get menu item by id
-// POST   /menu-items                                        - create a menu item
-// PUT    /menu-items/{id}                                   - update a menu item
-// DELETE /menu-items/{id}                                   - delete a menu item
-// GET    /menu-items/restaurant/{restaurantId}              - get all items for a restaurant
-// GET    /menu-items/restaurant/{restaurantId}/gluten-free  - get gluten-free items for a restaurant
-// GET    /menu-items/restaurant/{restaurantId}/celiac       - get celiac certified items for a restaurant
-// GET    /menu-items/restaurant/{restaurantId}/search       - search items by name within a restaurant
-// GET    /menu-items/search?keyword={keyword}               - search items by name across all restaurants
-// GET    /menu-items/celiac                                 - get all celiac certified items across all restaurants
 
 @RestController
 @RequestMapping("/menu-items")
@@ -38,47 +19,78 @@ public class MenuItemController {
     private final RestaurantRepository restaurantRepository;
 
     public MenuItemController(MenuItemRepository menuItemRepository,
-                               RestaurantRepository restaurantRepository) {
+                              RestaurantRepository restaurantRepository) {
         this.menuItemRepository = menuItemRepository;
         this.restaurantRepository = restaurantRepository;
     }
 
-    // GET all menu items
+    // ───────────── GET ALL ─────────────
     @GetMapping
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
     }
 
-    // GET single menu item by id
+    // ───────────── GET BY ID ─────────────
     @GetMapping("/{id}")
     public Optional<MenuItem> getMenuItemById(@PathVariable Long id) {
         return menuItemRepository.findById(id);
     }
 
-    // POST create a new menu item (restaurant must already exist)
-    @PostMapping
-    public MenuItem createMenuItem(@RequestBody MenuItem menuItem) {
-        return menuItemRepository.save(menuItem);
+    // ───────────── CREATE (NEW CLEAN WAY) ─────────────
+    @PostMapping("/restaurant/{restaurantId}")
+    public MenuItem addMenuItemToRestaurant(
+            @PathVariable Long restaurantId,
+            @RequestBody Map<String, Object> body) {
+
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        MenuItem item = new MenuItem();
+        item.setRestaurant(restaurant);
+
+        if (body.get("itemName") != null) {
+            item.setItemName((String) body.get("itemName"));
+        }
+
+        if (body.get("description") != null) {
+            item.setDescription((String) body.get("description"));
+        }
+
+        if (body.get("celiacCertified") != null) {
+            item.setCeliacCertified((Boolean) body.get("celiacCertified"));
+        }
+
+        return menuItemRepository.save(item);
     }
 
-    // PUT update an existing menu item
+    // ───────────── UPDATE ─────────────
     @PutMapping("/{id}")
-    public MenuItem updateMenuItem(@PathVariable Long id, @RequestBody MenuItem updatedItem) {
+    public MenuItem updateMenuItem(
+            @PathVariable Long id,
+            @RequestBody Map<String, Object> body) {
+
         return menuItemRepository.findById(id).map(item -> {
-            item.setItemName(updatedItem.getItemName());
-            item.setDescription(updatedItem.getDescription());
-            item.setCeliacCertified(updatedItem.isCeliacCertified());
-            item.setRestaurant(updatedItem.getRestaurant());
+
+            if (body.get("itemName") != null) {
+                item.setItemName((String) body.get("itemName"));
+            }
+
+            if (body.get("description") != null) {
+                item.setDescription((String) body.get("description"));
+            }
+
+            if (body.get("celiacCertified") != null) {
+                item.setCeliacCertified((Boolean) body.get("celiacCertified"));
+            }
+
             return menuItemRepository.save(item);
+
         }).orElseThrow(() -> new RuntimeException("Menu item not found with id " + id));
     }
 
-    // DELETE a menu item
+    // ───────────── DELETE ─────────────
     @DeleteMapping("/{id}")
     public void deleteMenuItem(@PathVariable Long id) {
         menuItemRepository.deleteById(id);
     }
-
-
-
 }

@@ -91,9 +91,7 @@ class RestaurantTests {
             .perform(get("/restaurants"))
             .andReturn()
             .getResponse();
-
         assertEquals(200, response.getStatus());
-
         String content = response.getContentAsString();
         assertTrue(content.startsWith("["));
         assertTrue(content.length() > 2);
@@ -109,15 +107,12 @@ class RestaurantTests {
         r.setFeatured(false);
         r.setCeliacCertified(false);
         restaurantRepository.save(r);
-
         MockHttpServletResponse response = mockMvc.perform(
             get("/restaurants")
                 .param("cuisine", "Italian")
                 .param("glutenFree", "true")
         ).andReturn().getResponse();
-
         assertEquals(200, response.getStatus());
-
         String content = response.getContentAsString();
         assertTrue(content.contains("Italian Test"));
     }
@@ -132,14 +127,11 @@ class RestaurantTests {
         r.setFeatured(false);
         r.setCeliacCertified(false);
         restaurantRepository.save(r);
-
         MockHttpServletResponse response = mockMvc.perform(
             get("/restaurants/search")
                 .param("keyword", "Sushi")
         ).andReturn().getResponse();
-
         assertEquals(200, response.getStatus());
-
         String content = response.getContentAsString();
         assertTrue(content.contains("Sushi Place"));
     }

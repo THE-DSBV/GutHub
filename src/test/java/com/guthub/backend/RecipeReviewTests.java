@@ -1,10 +1,12 @@
 package com.guthub.backend;
 
+import com.guthub.backend.model.Recipe;
+import com.guthub.backend.model.RecipeReview;
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.model.RestaurantReview;
 import com.guthub.backend.model.User;
-import com.guthub.backend.repository.RestaurantRepository;
-import com.guthub.backend.repository.RestaurantReviewRepository;
+import com.guthub.backend.repository.RecipeRepository;
+import com.guthub.backend.repository.RecipeReviewRepository;
 import com.guthub.backend.repository.UserRepository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,7 +31,7 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RestaurantReviewTests {
+public class RecipeReviewTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,14 +40,15 @@ public class RestaurantReviewTests {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private RestaurantReviewRepository reviewRepository;
+    private RecipeReviewRepository reviewRepository;
 
     @Autowired
-    private RestaurantRepository restaurantRepository;
+    private RecipeRepository recipeRepository;
 
     @Autowired
     private UserRepository userRepository;
 
+    // helper method to create valid user
     private User createUser() {
         User user = new User();
         user.setUsername("testuser" + System.currentTimeMillis());
@@ -53,38 +56,44 @@ public class RestaurantReviewTests {
         return userRepository.save(user);
     }
 
-    private Restaurant getRestaurant() {
-        return restaurantRepository.findById(1L).orElseThrow();
+    // helper method to get recipe
+    private Recipe getRecipe() {
+        return recipeRepository.findById(1L).orElseThrow();
     }
 
     @Test
     void getAllReviews() throws Exception {
         MockHttpServletResponse response = mockMvc
-                .perform(get("/restaurant-reviews"))
+                .perform(get("/recipe-reviews"))
                 .andReturn()
                 .getResponse();
+
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void getReviewById() throws Exception {
         User user = createUser();
-        Restaurant restaurant = getRestaurant();
-        RestaurantReview review = new RestaurantReview(8, "Solid food", restaurant);
+        Recipe recipe = getRecipe();
+
+        RecipeReview review = new RecipeReview(8, "Solid food", recipe);
         review.setUser(user);
         reviewRepository.save(review);
+
         MockHttpServletResponse response = mockMvc
-                .perform(get("/restaurant-reviews/" + review.getId()))
+                .perform(get("/recipe-reviews/" + review.getId()))
                 .andReturn()
                 .getResponse();
+
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void updateReview() throws Exception {
         User user = createUser();
-        Restaurant restaurant = getRestaurant();
-        RestaurantReview review = new RestaurantReview(5, "Old review", restaurant);
+        Recipe recipe = getRecipe();
+
+        RecipeReview review = new RecipeReview(5, "Old review", recipe);
         review.setUser(user);
         reviewRepository.save(review);
 
@@ -92,61 +101,63 @@ public class RestaurantReviewTests {
         json.put("rating", 10);
         json.put("text", "Updated review!");
 
-        ObjectNode restaurantNode = objectMapper.createObjectNode();
-        restaurantNode.put("id", 1);
-        json.set("restaurant", restaurantNode);
+        ObjectNode recipeNode = objectMapper.createObjectNode();
+        recipeNode.put("id", 1);
+        json.set("recipe", recipeNode);
 
         ObjectNode userNode = objectMapper.createObjectNode();
         userNode.put("username", user.getUsername());
         json.set("user", userNode);
 
         MockHttpServletResponse response = mockMvc.perform(
-                put("/restaurant-reviews/" + review.getId())
+                put("/recipe-reviews/" + review.getId())
                         .contentType("application/json")
                         .content(json.toString())
         ).andReturn().getResponse();
+
         assertEquals(200, response.getStatus());
     }
 
     @Test
     void deleteReview() throws Exception {
         User user = createUser();
-        Restaurant restaurant = getRestaurant();
+        Recipe recipe = getRecipe();
 
-        RestaurantReview review = new RestaurantReview(6, "To delete", restaurant);
+        RecipeReview review = new RecipeReview(6, "To delete", recipe);
         review.setUser(user);
         reviewRepository.save(review);
 
         MockHttpServletResponse response = mockMvc.perform(
-                delete("/restaurant-reviews/" + review.getId())
+                delete("/recipe-reviews/" + review.getId())
         ).andReturn().getResponse();
 
         assertEquals(200, response.getStatus());
         assertTrue(reviewRepository.findById(review.getId()).isEmpty());
     }
+
     @Test
-    void addReviewToRestaurant() throws Exception {
+    void addReviewToRecipe() throws Exception {
         User user = new User();
         user.setUsername("testuser_add");
         user.setPassword("password");
         userRepository.save(user);
-        Restaurant restaurant = restaurantRepository.findById(1L).orElseThrow();
+        Recipe recipe = recipeRepository.findById(1L).orElseThrow();
         ObjectNode json = objectMapper.createObjectNode();
         json.put("username", "testuser_add");
         json.put("rating", 8);
-        json.put("text", "Great food and service!");
+        json.put("text", "Good.");
         MockHttpServletResponse response = mockMvc.perform(
-                post("/restaurant-reviews/restaurant/1")
+                post("/recipe-reviews/recipe/1")
                         .contentType("application/json")
                         .content(json.toString())
         ).andReturn().getResponse();
         assertEquals(200, response.getStatus());
-        List<RestaurantReview> reviews = reviewRepository.findAll();
+        List<RecipeReview> reviews = reviewRepository.findAll();
         assertTrue(!reviews.isEmpty());
-        RestaurantReview added = reviews.get(reviews.size() - 1);
+        RecipeReview added = reviews.get(reviews.size() - 1);
         assertEquals(8, added.getRating());
-        assertEquals("Great food and service!", added.getText());
+        assertEquals("Good.", added.getText());
         assertEquals("testuser_add", added.getUser().getUsername());
-        assertEquals(1L, added.getRestaurant().getId());
+        assertEquals(1L, added.getRecipe().getId());
     }
 }

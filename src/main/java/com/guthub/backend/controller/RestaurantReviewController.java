@@ -44,6 +44,7 @@ public class RestaurantReviewController {
         return restaurantReviewRepository.findById(id);
     }
 
+    //This method is useless because addReviewToRestaurant is the proper way to create a review, but it's here for completeness sake
     @PostMapping
     public RestaurantReview createRestaurantReview(@RequestBody RestaurantReview review) {
         // Ensure the restaurant exists

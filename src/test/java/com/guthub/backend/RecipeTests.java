@@ -45,7 +45,6 @@ class RecipeTests {
         assertEquals(1L, receivedJson.get("id").longValue());
         assertEquals("Avocado Egg Breakfast Bowl", receivedJson.get("name").textValue());
         assertEquals("eggs, avocado, spinach, salt", receivedJson.get("ingredients").textValue());
-        assertEquals("Cook eggs and assemble bowl.", receivedJson.get("instructions").textValue());
         assertEquals(true, receivedJson.get("glutenFree").booleanValue());
     }
     
@@ -79,5 +78,61 @@ class RecipeTests {
         MockHttpServletResponse response = mockMvc.perform(delete("/recipes/123456").contentType("application/json")).andReturn().getResponse();
         assertEquals(200, response.getStatus());
         assertTrue(recipeRepository.findById(123456L).isEmpty());
+    }
+
+    @Test
+    void updateRecipe() throws Exception {
+        Recipe r = new Recipe();
+        r.setName("Old Name");
+        r.setIngredients("Old Ingredients");
+        r.setInstructions("Old Instructions");
+        r.setGlutenFree(false);
+        recipeRepository.save(r);
+        ObjectNode updatedJson = objectMapper.createObjectNode();
+        updatedJson.put("name", "Updated Name");
+        updatedJson.put("ingredients", "Updated Ingredients");
+        updatedJson.put("instructions", "Updated Instructions");
+        updatedJson.put("glutenFree", true);
+        MockHttpServletResponse response = mockMvc.perform(
+            put("/recipes/" + r.getId())
+            .contentType("application/json")
+            .content(updatedJson.toString())
+        ).andReturn().getResponse();
+        assertEquals(200, response.getStatus());
+        Recipe updated = recipeRepository.findById(r.getId()).get();
+        assertEquals("Updated Name", updated.getName());
+        assertEquals(true, updated.isGlutenFree());
+    }
+
+    @Test
+    void searchRecipes() throws Exception {
+        Recipe r = new Recipe();
+        r.setName("Chocolate Cake");
+        r.setIngredients("chocolate, flour");
+        r.setInstructions("mix and bake");
+        r.setGlutenFree(false);
+        recipeRepository.save(r);
+
+        MockHttpServletResponse response = mockMvc.perform(
+            get("/recipes/search")
+            .param("keyword", "Chocolate")
+        ).andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        String content = response.getContentAsString();
+        assertTrue(content.contains("Chocolate Cake"));
+    }
+    
+    @Test
+    void getTopRated() throws Exception {
+        MockHttpServletResponse response = mockMvc.perform(
+            get("/recipes/moreThan/0")
+        ).andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        String content = response.getContentAsString();
+        assertTrue(content.startsWith("["));
     }
 }

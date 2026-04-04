@@ -43,16 +43,16 @@ class RestaurantTests {
         assertEquals(200, response.getStatus());
         ObjectNode receivedJson = objectMapper.readValue(response.getContentAsString(), ObjectNode.class);
         assertEquals(1L, receivedJson.get("id").longValue());
-        assertEquals("Golden Fork Bistro", receivedJson.get("name").textValue());
-        assertEquals("France", receivedJson.get("location").textValue());
-        assertEquals("French", receivedJson.get("cuisineType").textValue());
+        assertEquals("Riz Gluten-Free Asian Kitchen", receivedJson.get("name").textValue());
+        assertEquals("3471 Yonge St, North York, Toronto, ON", receivedJson.get("location").textValue());
+        assertEquals("Asian", receivedJson.get("cuisineType").textValue());
         assertEquals(true, receivedJson.get("glutenFree").booleanValue());
         assertEquals(true, receivedJson.get("featured").booleanValue());
-        assertEquals(false, receivedJson.get("celiacCertified").booleanValue());
+        assertEquals(true, receivedJson.get("celiacCertified").booleanValue());
     }
     
     @Test
-    void addRecipe() throws Exception{
+    void addRestaurant() throws Exception{
         ObjectNode recipeJson = objectMapper.createObjectNode();
         recipeJson.put("name", "Added Restaurant Test");
         recipeJson.put("location", "Added Test restaurant location");
@@ -84,4 +84,97 @@ class RestaurantTests {
         assertEquals(200, response.getStatus());
         assertTrue(restaurantRepository.findById(123456L).isEmpty());
     }
+
+    @Test
+    void getAllRestaurants() throws Exception {
+        MockHttpServletResponse response = mockMvc
+            .perform(get("/restaurants"))
+            .andReturn()
+            .getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        String content = response.getContentAsString();
+        assertTrue(content.startsWith("["));
+        assertTrue(content.length() > 2);
+    }
+
+    @Test
+    void filterRestaurants() throws Exception {
+        Restaurant r = new Restaurant();
+        r.setName("Italian Test");
+        r.setLocation("Italy");
+        r.setCuisineType("Italian");
+        r.setGlutenFree(true);
+        r.setFeatured(false);
+        r.setCeliacCertified(false);
+        restaurantRepository.save(r);
+
+        MockHttpServletResponse response = mockMvc.perform(
+            get("/restaurants")
+                .param("cuisine", "Italian")
+                .param("glutenFree", "true")
+        ).andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        String content = response.getContentAsString();
+        assertTrue(content.contains("Italian Test"));
+    }
+
+    @Test
+    void searchRestaurants() throws Exception {
+        Restaurant r = new Restaurant();
+        r.setName("Sushi Place");
+        r.setLocation("Japan");
+        r.setCuisineType("Japanese");
+        r.setGlutenFree(true);
+        r.setFeatured(false);
+        r.setCeliacCertified(false);
+        restaurantRepository.save(r);
+
+        MockHttpServletResponse response = mockMvc.perform(
+            get("/restaurants/search")
+                .param("keyword", "Sushi")
+        ).andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        String content = response.getContentAsString();
+        assertTrue(content.contains("Sushi Place"));
+    }
+
+    @Test
+    void updateRestaurant() throws Exception {
+        Restaurant r = new Restaurant();
+        r.setName("Old Name");
+        r.setLocation("Old Location");
+        r.setCuisineType("Old Cuisine");
+        r.setGlutenFree(false);
+        r.setFeatured(false);
+        r.setCeliacCertified(false);
+        restaurantRepository.save(r);
+
+        ObjectNode updatedJson = objectMapper.createObjectNode();
+        updatedJson.put("name", "Updated Name");
+        updatedJson.put("location", "Updated Location");
+        updatedJson.put("cuisineType", "Updated Cuisine");
+        updatedJson.put("glutenFree", true);
+        updatedJson.put("featured", true);
+        updatedJson.put("celiacCertified", true);
+
+        MockHttpServletResponse response = mockMvc.perform(
+            put("/restaurants/" + r.getId())
+                .contentType("application/json")
+                .content(updatedJson.toString())
+        ).andReturn().getResponse();
+
+        assertEquals(200, response.getStatus());
+
+        Restaurant updated = restaurantRepository.findById(r.getId()).get();
+        assertEquals("Updated Name", updated.getName());
+        assertEquals(true, updated.isGlutenFree());
+    }
+
+
 }

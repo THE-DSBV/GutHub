@@ -43,14 +43,14 @@ INSERT INTO recipe (name, ingredients, instructions, gluten_free, featured, imag
 ('Veggie Pizza', 'gluten free pizza dough, tomato sauce, vegetables', 'Bake assembled pizza.', FALSE, FALSE, 'https://www.glutenfreealchemist.com/wp-content/uploads/2023/08/gluten-free-pizza-new-york-style-FI-scaled.jpg'),
 ('Thai Peanut Noodles', 'rice noodles, peanut sauce, vegetables', 'Cook noodles and mix sauce.', TRUE, FALSE, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2dJdWLjZB1A06JbnTNM_-y9ZdX7JZcq0ULw&s'),
 ('Beef Burger', 'beef patty, bun, lettuce, tomato', 'Grill patty and assemble burger.', FALSE, FALSE, 'https://bigmamafoods.com/cdn/shop/articles/IMG_4485.jpg?v=1747234615'),
-('Chicken Alfredo', 'pasta, chicken, cream sauce', 'Cook pasta and combine with chicken.', FALSE, FALSE, NULL),
+('Chicken Alfredo', 'gluten free pasta, chicken, cream sauce', 'Cook pasta and combine with chicken.', TRUE, FALSE, 'https://www.peelwithzeal.com/wp-content/uploads/2024/03/Gluten-Free-chicken-Alfredo.jpg'),
 ('Stuffed Bell Peppers', 'peppers, rice, beef, cheese', 'Stuff peppers and bake.', TRUE, FALSE, 'https://hips.hearstapps.com/hmg-prod/images/stuffed-peppers-recipe-2-6594706a0a63b.jpg?crop=0.8888888888888888xw:1xh;center,top&resize=1200:*'),
-('Breakfast Burrito', 'eggs, tortilla, beans, cheese', 'Fill tortilla and wrap.', FALSE, FALSE, NULL),
+('Breakfast Burrito', 'eggs, corn tortilla, beans, cheese', 'Fill tortilla and wrap.', FALSE, FALSE, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiW5e2PNJIvuicvsdXX7STOwTSVlmMq8m91w&s'),
 ('Chicken Noodle Soup', 'chicken, noodles, carrots', 'Simmer chicken and vegetables.', FALSE, FALSE, NULL),
 ('Grilled Steak', 'steak, salt, pepper', 'Grill steak to desired doneness.', TRUE, FALSE, 'https://mccormick.widen.net/content/ary8ad7i8i/jpeg/savory_montreal_steak_rub_6875.jpg?crop=true&anchor=0,0&q=80&color=ffffffff&u=xveud9&w=2048&h=1365'),
 ('Vegetable Curry', 'mixed vegetables, coconut milk, spices', 'Cook vegetables with curry sauce.', TRUE, FALSE, 'https://www.indianhealthyrecipes.com/wp-content/uploads/2023/07/vegetable-curry-recipe.jpg'),
 ('Ham and Cheese Sandwich', 'ham, cheese, bread', 'Assemble sandwich.', FALSE, FALSE, NULL),
-('Shrimp Tacos', 'shrimp, gluten free tortillas, cabbage', 'Cook shrimp and assemble tacos.', TRUE, FALSE, NULL),
+('Shrimp Tacos', 'shrimp, corn tortillas, cabbage', 'Cook shrimp and assemble tacos.', TRUE, FALSE, NULL),
 ('Rice and Beans', 'rice, beans, spices', 'Cook rice and beans together.', TRUE, FALSE, NULL),
 ('Chicken Parmesan', 'chicken, breadcrumbs, tomato sauce', 'Bread chicken and bake with sauce.', FALSE, FALSE, NULL),
 ('Greek Salad', 'cucumber, tomato, feta, olives', 'Mix vegetables and cheese.', TRUE, FALSE, 'https://www.simplyrecipes.com/thmb/0NrKQlJ691l6L9tZXpL06uOuWis=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Easy-Greek-Salad-LEAD-2-4601eff771fd4de38f9722e8cafc897a.jpg'),
@@ -156,4 +156,17 @@ INSERT INTO menu_item (item_name, description, celiac_certified, restaurant_id) 
 
 ('Eggs Benedict', 'Poached eggs on a gluten-free english muffin with hollandaise', TRUE, 2),
 ('Avocado Toast', 'Gluten-free sourdough with smashed avocado and microgreens', TRUE, 2),
-('Buttermilk Pancakes', 'Fluffy gluten-free pancakes with maple syrup and fresh berries', TRUE, 2);
+('Buttermilk Pancakes', 'Fluffy gluten-free pancakes with maple syrup and fresh berries', TRUE, 2),
+
+('Vegan Chocolate Cake', 'Rich and moist chocolate cake made with gluten-free flour', TRUE, 3),
+('Gluten-Free Croissant', 'Flaky and buttery croissant made without gluten', TRUE, 3),
+('Almond Butter Muffin', 'Moist muffin made with almond butter and gluten-free flour', TRUE, 3),
+
+('Chicken Tacos', 'Grilled chicken with fresh salsa and corn tortillas', TRUE, 4),
+('Fish Tacos', 'Crispy fish with cabbage slaw and lime crema in corn tortillas', TRUE, 4),
+('Veggie Tacos', 'Roasted vegetables with avocado and salsa in corn tortillas', TRUE, 4),
+
+('Vegan Brownie', 'Fudgy brownie made with gluten-free flour and no animal products', TRUE, 5),
+('Gluten-Free Cookie', 'Chewy cookie made without gluten', TRUE, 5),
+('Lemon Bar', 'Tangy lemon bar with a gluten-free crust', TRUE, 5);
+

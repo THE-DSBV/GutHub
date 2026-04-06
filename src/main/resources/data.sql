@@ -64,7 +64,7 @@ INSERT INTO recipe (name, ingredients, instructions, gluten_free, featured, imag
 ('Beef Chili', 'beef, beans, chili powder', 'Simmer beef and beans.', TRUE, FALSE, 'https://www.thespruceeats.com/thmb/Ml2D_7b2-QrY7cJhGUmySrbh-WQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/easy-ground-beef-chili-3053290-7-5b3f8cff46e0fb00375b1d6a.jpg'),
 ('Egg Salad', 'eggs, mayo, mustard', 'Mix chopped eggs and dressing.', TRUE, FALSE, NULL),
 ('Chicken Tikka', 'chicken, yogurt, spices', 'Marinate and grill chicken.', TRUE, FALSE, NULL),
-('Garlic Butter Shrimp', 'shrimp, butter, garlic', 'Cook shrimp in butter.', TRUE, FALSE, NULL),
+('Garlic Butter Shrimp', 'shrimp, butter, garlic', 'Cook shrimp in butter.', TRUE, FALSE, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHFiYHDygWnm3VicrFbW_xZAD-pTSNh91IoQ&s'),
 ('BBQ Pulled Pork Sandwich', 'pork, BBQ sauce, bun', 'Slow cook pork and assemble.', FALSE, FALSE, NULL),
 ('Vegetable Lasagna', 'lasagna noodles, vegetables, cheese', 'Layer ingredients and bake.', FALSE, FALSE, NULL),
 ('Avocado Toast', 'bread, avocado, salt', 'Toast bread and spread avocado.', FALSE, FALSE, NULL),

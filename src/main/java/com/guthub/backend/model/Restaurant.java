@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 import io.micrometer.common.lang.Nullable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Restaurant {
@@ -11,8 +13,12 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "Location is required")
     private String location;
+    @NotBlank(message = "Cuisine type is required")
     private String cuisineType;
     private Boolean glutenFree;
     private Boolean featured;

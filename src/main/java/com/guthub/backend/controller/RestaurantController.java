@@ -17,13 +17,8 @@ import com.guthub.backend.controller.dto.MenuItemDTO;
 import com.guthub.backend.model.MenuItem;
 import com.guthub.backend.model.Restaurant;
 import com.guthub.backend.repository.RestaurantRepository;
+import jakarta.validation.Valid;
 
-// Available API endpoints:
-// GET /recipes
-// GET /recipes/{id}
-// POST /recipes
-// PUT /recipes/{id}
-// DELETE /recipes/{id}
 
 @RestController
 @RequestMapping("/restaurants")
@@ -108,12 +103,12 @@ public class RestaurantController {
     }
 
     @PostMapping
-    public Restaurant createRestaurant(@RequestBody Restaurant restaurant) {
+    public Restaurant createRestaurant(@Valid @RequestBody Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
 
     @PutMapping("/{id}")
-    public Restaurant updateRestaurant(@PathVariable Long id, @RequestBody Restaurant updatedRestaurant) {
+    public Restaurant updateRestaurant(@PathVariable Long id, @Valid @RequestBody Restaurant updatedRestaurant) {
         return restaurantRepository.findById(id).map(restaurant -> {
             restaurant.setName(updatedRestaurant.getName());
             restaurant.setLocation(updatedRestaurant.getLocation());

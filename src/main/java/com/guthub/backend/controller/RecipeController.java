@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import jakarta.validation.Valid;
 
 //import com.guthub.backend.controller.exceptions.RecipeNotFoundException;
 
@@ -39,12 +40,12 @@ public class RecipeController {
     }
 
     @PostMapping
-    public Recipe createRecipe(@RequestBody Recipe recipe) {
+    public Recipe createRecipe(@Valid @RequestBody Recipe recipe) {
         return recipeRepository.save(recipe);
     }
 
     @PutMapping("/{id}")
-    public Recipe updateRecipe(@PathVariable Long id, @RequestBody Recipe updatedRecipe) {
+    public Recipe updateRecipe(@PathVariable Long id, @Valid @RequestBody Recipe updatedRecipe) {
         return recipeRepository.findById(id).map(recipe -> {
             recipe.setName(updatedRecipe.getName());
             recipe.setIngredients(updatedRecipe.getIngredients());

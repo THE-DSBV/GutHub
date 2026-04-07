@@ -24,19 +24,16 @@ public class MenuItemController {
         this.restaurantRepository = restaurantRepository;
     }
 
-    // ───────────── GET ALL ─────────────
     @GetMapping
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
     }
 
-    // ───────────── GET BY ID ─────────────
     @GetMapping("/{id}")
     public Optional<MenuItem> getMenuItemById(@PathVariable Long id) {
         return menuItemRepository.findById(id);
     }
 
-    // ───────────── CREATE (NEW CLEAN WAY) ─────────────
     @PostMapping("/restaurant/{restaurantId}")
     public MenuItem addMenuItemToRestaurant(
             @PathVariable Long restaurantId,
@@ -44,6 +41,11 @@ public class MenuItemController {
 
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        String itemName = (String) body.get("itemName");
+        if (itemName == null || itemName.isBlank()) {
+            throw new RuntimeException("Item name is required");
+        }
 
         MenuItem item = new MenuItem();
         item.setRestaurant(restaurant);
@@ -63,14 +65,16 @@ public class MenuItemController {
         return menuItemRepository.save(item);
     }
 
-    // ───────────── UPDATE ─────────────
     @PutMapping("/{id}")
     public MenuItem updateMenuItem(
             @PathVariable Long id,
             @RequestBody Map<String, Object> body) {
 
         return menuItemRepository.findById(id).map(item -> {
-
+            String itemName = (String) body.get("itemName");
+            if (itemName != null && itemName.isBlank()) {
+                throw new RuntimeException("Item name cannot be blank");
+            }
             if (body.get("itemName") != null) {
                 item.setItemName((String) body.get("itemName"));
             }
@@ -88,7 +92,6 @@ public class MenuItemController {
         }).orElseThrow(() -> new RuntimeException("Menu item not found with id " + id));
     }
 
-    // ───────────── DELETE ─────────────
     @DeleteMapping("/{id}")
     public void deleteMenuItem(@PathVariable Long id) {
         menuItemRepository.deleteById(id);

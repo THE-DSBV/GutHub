@@ -10,6 +10,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Recipe {
@@ -18,8 +20,11 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     private String name;
+    @NotBlank(message = "Ingredients are required")
     private String ingredients;
+    @NotBlank(message = "Instructions are required")
     private String instructions;
     private Boolean glutenFree;
     private Boolean featured;

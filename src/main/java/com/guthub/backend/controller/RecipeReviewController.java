@@ -20,6 +20,7 @@ import com.guthub.backend.model.RecipeReview;
 import com.guthub.backend.repository.RecipeRepository;
 import com.guthub.backend.repository.RecipeReviewRepository;
 
+
 @RestController
 @RequestMapping("/recipe-reviews")
 public class RecipeReviewController {
@@ -74,6 +75,17 @@ public class RecipeReviewController {
                 .orElseThrow(() -> new RuntimeException("Recipe not found"));
 
         String username = (String) body.get("username");
+        if(username == null|| username.isBlank()) {
+            throw new RuntimeException("Username is required");
+        }
+        Object ratingObj = body.get("rating");
+        if (ratingObj == null) {
+            throw new RuntimeException("Rating is required");
+        }
+        int rating = (int) ratingObj;
+        if (rating < 1 || rating > 10) {
+            throw new RuntimeException("Rating must be between 1 and 10");
+        }
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 

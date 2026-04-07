@@ -1,7 +1,9 @@
 package com.guthub.backend.controller.dto;
+import jakarta.validation.constraints.NotBlank;
 
 public class MenuItemDTO {
     private Long id;
+    @NotBlank(message = "Item name is required")
     private String itemName;
     private String description;
     private Boolean celiacCertified;

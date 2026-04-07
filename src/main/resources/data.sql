@@ -170,3 +170,63 @@ INSERT INTO menu_item (item_name, description, celiac_certified, restaurant_id) 
 ('Gluten-Free Cookie', 'Chewy cookie made without gluten', TRUE, 5),
 ('Lemon Bar', 'Tangy lemon bar with a gluten-free crust', TRUE, 5);
 
+('Original Dirty Bird', 'Gluten-free fried chicken with maple dust seasoning and house sauce', FALSE, 6),
+('GF Waffles', 'Fluffy gluten-free waffles served with maple butter', FALSE, 6),
+('Dirty Fries', 'Hand-cut fries with cheddar, dirty sauce, and fried onions', FALSE, 6),
+
+('Crispy Beef', 'Wok-fried crispy beef in a sweet and savory gluten-free sauce', TRUE, 7),
+('Chicken Gyoza', 'Pan-fried gluten-free chicken dumplings with dipping sauce', TRUE, 7),
+('Peking Duck', 'Slow-roasted duck with gluten-free pancakes and hoisin', TRUE, 7),
+('Pho', 'Rich gluten-free broth with rice noodles and your choice of protein', TRUE, 7),
+
+('Barque Caesar', 'Romaine with house caesar dressing, hold the croutons', FALSE, 8),
+('Baby Back Ribs', 'Slow-smoked ribs with gluten-free house rub and sauce', FALSE, 8),
+('Beef Brisket', 'Hickory-smoked beef brisket sliced to order', FALSE, 8),
+('Seasoned Fries', 'House-seasoned fries cooked in a dedicated gluten-free fryer', FALSE, 8),
+
+('Pad Thai', 'Classic rice noodles with shrimp, bean sprouts, and peanuts', FALSE, 9),
+('Green Curry', 'Coconut milk curry with vegetables and jasmine rice', FALSE, 9),
+('Mango Salad', 'Fresh shredded mango with chili, lime, and toasted cashews', FALSE, 9),
+('Toasted Cashew Chicken', 'Stir-fried chicken with vegetables and toasted cashews', FALSE, 9),
+
+('Coconut Curry Tofu', 'Silken tofu in a rich coconut curry over jasmine rice', FALSE, 10),
+('Lemongrass Chicken', 'Grilled lemongrass chicken with peanut sauce and rice', FALSE, 10),
+('Spring Roll Bowl', 'Deconstructed spring roll with vermicelli, herbs, and dipping sauce', FALSE, 10),
+
+('Chicken Pho', 'Slow-simmered gluten-free broth with rice noodles and chicken', TRUE, 11),
+('Salt and Pepper Shrimp', 'Crispy shrimp tossed in house seasoning with fresh herbs', TRUE, 11),
+('Shaking Beef', 'Wok-tossed beef cubes with garlic, butter, and watercress', TRUE, 11),
+('Bun Cha', 'Grilled pork patties with vermicelli, herbs, and dipping sauce', TRUE, 11),
+
+('Hero Bowl', 'Greens, roasted veggies, falafel, hummus, and lemon tahini', TRUE, 12),
+('Zesty Mexican Bowl', 'Brown rice, black beans, corn salsa, guac, and chipotle sauce', TRUE, 12),
+('Harvest Bowl', 'Roasted squash, kale, quinoa, cranberries, and maple dressing', TRUE, 12),
+('Paleo Cookie', 'Gluten-free cookie made with almond flour and coconut sugar', TRUE, 12),
+
+('Avocado Bowl', 'Brown rice, roasted veg, avocado, and lemon tahini dressing', TRUE, 13),
+('Power Smoothie', 'Banana, almond milk, protein, and spirulina blend', TRUE, 13),
+('GF Banana Bread', 'Moist gluten-free banana bread slice', TRUE, 13),
+
+('Brownie Batter Gelato', 'Allergen-free brownie batter flavoured gelato', TRUE, 14),
+('Salted Caramel Gelato', 'Creamy salted caramel gelato made without gluten or dairy', TRUE, 14),
+('Boozy Espresso Gelato', 'Espresso gelato with a splash of Kahlua', TRUE, 14),
+
+('Guacamole and Chips', 'Fresh guacamole with crispy corn tortilla chips', FALSE, 15),
+('Enchiladas', 'Corn tortilla enchiladas with chicken, salsa, and cheese', FALSE, 15),
+('Fish Tacos', 'Grilled fish with homemade salsa and corn tortillas', FALSE, 15),
+
+('Dark Chocolate Mousse', 'Rich gluten-free dark chocolate mousse with raspberry coulis', FALSE, 16),
+('Hummus', 'House-made hummus with warm flatbread', FALSE, 16),
+('Lamb Ribs', 'Slow-cooked lamb ribs with dukkah and yogurt', FALSE, 16),
+
+('Patatas Bravas', 'Crispy potatoes with spicy tomato sauce and aioli', FALSE, 17),
+('Gambas al Ajillo', 'Garlic shrimp sautéed in olive oil with chili', FALSE, 17),
+('Iberico Charcuterie', 'Selection of Spanish cured meats and manchego', FALSE, 17),
+
+('Saganaki', 'Pan-seared halloumi flambéed tableside with lemon', FALSE, 18),
+('Whole Sea Bass', 'Grilled whole sea bass with lemon, capers, and herbs', FALSE, 18),
+('Avgolemono Soup', 'Classic Greek egg and lemon soup with orzo', FALSE, 18),
+
+('Brisket Platter', 'Hickory-smoked beef brisket with house slaw and pickles', FALSE, 19),
+('Pulled Pork Sandwich', 'Slow-smoked pulled pork on a gluten-free bun', FALSE, 19),
+('Smoked Wings', 'Dry-rubbed smoked chicken wings with house dipping sauce', FALSE, 19);

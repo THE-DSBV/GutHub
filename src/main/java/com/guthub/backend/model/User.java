@@ -10,19 +10,26 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
+    @NotBlank(message = "Username is required")
     private String username;
 
+    @Email(message = "Email should be valid")
     private String email;
 
     private int yearJoined;
 
     @JsonIgnore
+    @NotBlank(message = "Password is required")
     private String password;
 
     private Boolean isAdmin;

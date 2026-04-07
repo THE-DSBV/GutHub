@@ -19,6 +19,7 @@ import com.guthub.backend.model.User;
 import com.guthub.backend.repository.RestaurantRepository;
 import com.guthub.backend.repository.RestaurantReviewRepository;
 import com.guthub.backend.repository.UserRepository;
+import jakarta.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/restaurant-reviews")
@@ -75,6 +76,20 @@ public class RestaurantReviewController {
                 .orElseThrow(() -> new RuntimeException("Restaurant not found"));
 
         String username = (String) body.get("username");
+        if (username == null || username.isBlank()) {
+            throw new RuntimeException("Username is required");
+        }
+        Object ratingObj = body.get("rating");
+        if (ratingObj == null) {
+            throw new RuntimeException("Rating is required");
+        }
+        if (!(ratingObj instanceof Integer)) {
+            throw new RuntimeException("Rating must be an integer");
+        }
+        int rating = (int) ratingObj;
+        if (rating < 1 || rating > 10) {
+            throw new RuntimeException("Rating must be between 1 and 10");
+        }
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 

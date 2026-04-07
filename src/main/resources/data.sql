@@ -168,7 +168,7 @@ INSERT INTO menu_item (item_name, description, celiac_certified, restaurant_id) 
 
 ('Vegan Brownie', 'Fudgy brownie made with gluten-free flour and no animal products', TRUE, 5),
 ('Gluten-Free Cookie', 'Chewy cookie made without gluten', TRUE, 5),
-('Lemon Bar', 'Tangy lemon bar with a gluten-free crust', TRUE, 5);
+('Lemon Bar', 'Tangy lemon bar with a gluten-free crust', TRUE, 5),
 
 ('Original Dirty Bird', 'Gluten-free fried chicken with maple dust seasoning and house sauce', FALSE, 6),
 ('GF Waffles', 'Fluffy gluten-free waffles served with maple butter', FALSE, 6),

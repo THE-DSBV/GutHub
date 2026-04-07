@@ -11,6 +11,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotNull;
 
 @MappedSuperclass
 public abstract class Review {
@@ -19,10 +22,13 @@ public abstract class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "User is required")
     @ManyToOne
     @JoinColumn(name = "username", nullable = false)
     private User user;
     
+    @Min(value = 1, message = "Rating must be at least 1")
+    @Max(value = 10, message = "Rating must be at most 10")
     private int rating;
     private String text;
 

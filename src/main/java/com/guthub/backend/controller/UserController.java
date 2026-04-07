@@ -38,7 +38,12 @@ public class UserController {
         String username = userData.get("username");
         String rawPassword = userData.get("password");
 
-
+        if (username == null || username.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Username is required"));
+        }
+        if (rawPassword == null || rawPassword.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Password is required"));
+        }
         if (userRepository.findByUsername(username).isPresent()) {
             System.err.println("Error: Username '" + username + "' is already taken.");
             return ResponseEntity.badRequest().body(Map.of("error", "Username already taken"));
@@ -55,6 +60,12 @@ public class UserController {
         String username = credentials.get("username");
         String password = credentials.get("password");
 
+        if (username == null || username.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Username is required"));
+        }
+        if (password == null || password.isBlank()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Password is required"));
+        }
 
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
